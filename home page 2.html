@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navbar with Slideshow & Gallery</title>
+    <link rel="stylesheet" href="homepage2.css">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="file:///C:/Users/praty/OneDrive/Desktop/STUDY/html/uidweb/home%20page/home%20page%202.html">Home</a>
+        <a href="file:///C:/Users/praty/OneDrive/Desktop/STUDY/html/uidweb/home%20page/Sports.html">Sports</a>
+        <a href="file:///C:/Users/praty/OneDrive/Desktop/STUDY/html/uidweb/home%20page/music.html#genres">Music</a>
+        <a href="file:///C:/Users/praty/OneDrive/Desktop/STUDY/html/uidweb/home%20page/movie.html">Movies</a>
+        <a href="file:///C:/Users/praty/OneDrive/Desktop/STUDY/html/uidweb/home%20page/gaming.html">Gaming</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#clients">Clients</a>
+        <a href="#contact">Contact</a>
+    </div>
+    
+    <!-- Main Content -->
+    <div id="main">
+        <!-- Top Navigation -->
+        <div class="topnav">
+            <button class="openbtn" onclick="openNav()">☰</button>
+            <div class="logo">FanZone</div>
+            <a href="file:///C:/Users/praty/OneDrive/Desktop/STUDY/html/uidweb/home%20page/home%20page%202.html">Home</a>
+            <a href="file:///C:/Users/praty/OneDrive/Desktop/STUDY/html/uidweb/home%20page/news.html">News</a>
+            <a href="#contact">Contact</a>
+            <a href="file:///C:/Users/praty/OneDrive/Desktop/STUDY/html/uidweb/home%20page/add_event_list.html" class="events">Events</a>
+            <a href="file:///C:/Users/praty/OneDrive/Desktop/STUDY/html/uidweb/home%20page/poll.html">Polls</a>
+            
+            <div class="search-container">
+                <form action="/action_page.php">
+                    <input type="text" placeholder="Search.." name="search">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+            
+            <a href="#about" class="split">Help</a>
+            <a href="file:///C:/Users/praty/OneDrive/Desktop/STUDY/html/uidweb/homelogin.html" class="login" style="color: black;">Login/Sign In</a>
+        </div>
+        
+        <!-- Page Content -->
+        <div class="content">
+            <h2>Welcome to FanZone!</h2>
+            <p>Your ultimate destination for sports, music, movies, and gaming.</p>
+        </div>
+    </div>
+
+    <!-- Slideshow Section -->
+
+      
+      <h1 class="page-title">Latest Highlights From Our Categories</h1>
+      
+      <p class="scroll-instruction">Scroll sideways to see highlights →</p>
+      
+      <div class="scroll-indicator">
+        <span>← Music</span>
+        <span>Movies</span>
+        <span>Sports</span>
+        <span>Gaming</span>
+        <span>Events</span>
+        <span>Polls</span>
+        <span>News →</span>
+      </div>
+      
+      <div class="slideshow-container">
+        <div class="slide">
+          <div class="slide-content">
+            <div class="slide-category">Music</div>
+            <img src="https://www.hollywoodreporter.com/wp-content/uploads/2024/02/GettyImages-1986513121.jpg" alt="Taylor Swift Concert">
+            <div class="slide-caption">Taylor Swift Announces Surprise Album and World Tour Dates</div>
+          </div>
+        </div>
+        
+        <div class="slide">
+          <div class="slide-content">
+            <div class="slide-category">Movies</div>
+            <img src="https://c.ndtvimg.com/2019-04/2rpnoa2g_avengers-review-facebook_625x300_26_April_19.jpg?downsize=545:307" alt="Avengers Movie">
+            <div class="slide-caption">New Avengers Movie Breaks All Box Office Records</div>
+          </div>
+        </div>
+        
+        <div class="slide">
+          <div class="slide-content">
+            <div class="slide-category">Sports</div>
+            <img src="https://www.rollingstone.com/wp-content/uploads/2025/03/World-Cup-Soccer-Argentina-vs-Brazil-Getty-Header.jpg?w=1580&h=1054&crop=1" alt="World Cup Final">
+            <div class="slide-caption">World Cup Final: Argentina vs Brazil This Weekend</div>
+          </div>
+        </div>
+        
+        <div class="slide">
+          <div class="slide-content">
+            <div class="slide-category">Gaming</div>
+            <img src="https://www.yankodesign.com/images/design_news/2025/01/draft-sony-ps-6/playstation_6_concept_3.jpg" alt="New PlayStation">
+            <div class="slide-caption">PlayStation 6 Rumors: What We Know So Far</div>
+          </div>
+        </div>
+        
+        <div class="slide">
+          <div class="slide-content">
+            <div class="slide-category">Events</div>
+            <img src="https://cdn.prod.website-files.com/5f8ef28f39796751fbeb6e26/675971cd2460b3f1fcaaec2f_Ticketing%20info%20banner.webp" alt="Comic Con">
+            <div class="slide-caption">Comic Con Tickets Now Available - New Celebrity Guests Announced</div>
+          </div>
+        </div>
+        
+        <div class="slide">
+          <div class="slide-content">
+            <div class="slide-category">Polls</div>
+            <img src="https://static1.moviewebimages.com/wordpress/wp-content/uploads/2024/06/best-superhero-movies-of-all-time-ranked.jpg" alt="Fan Poll">
+            <div class="slide-caption">Fan Poll Results: Best Superhero Movie of All Time</div>
+          </div>
+        </div>
+        
+        <div class="slide">
+          <div class="slide-content">
+            <div class="slide-category">News</div>
+            <img src="https://pyxis.nymag.com/v1/imgs/8a1/79b/08f76e1623a5e53872294f49169210d20f-disney-animation-lede.2x.rsocial.w600.jpg" alt="Entertainment News">
+            <div class="slide-caption">Breaking: Disney Acquires Major Anime Studio</div>
+          </div>
+        </div>
+      </div>
+    <h1>TRENDING NEWS</h1>
+
+    <section class="trending-news">
+        <h1 class="section-title">TRENDING NEWS</h1>
+        
+        <div class="news-gallery">
+          <!-- Shreya Goshal IPL News -->
+          <div class="news-item" data-category="Music">
+            <div class="news-card">
+              <span class="category-badge music">🎵 Music</span>
+              <div class="image-container">
+                <img src="https://pbs.twimg.com/media/GmpU7aEa0AAiEw6.jpg:large" alt="Shreya Goshal performing at the IPL opening ceremony with colorful stage lights" class="news-image">
+              </div>
+              <div class="news-desc">
+                <h3>Shreya's Stellar IPL Performance</h3>
+                <p>Shreya delivered an almost 15-minute-long performance at the IPL opening ceremony</p>
+              </div>
+            </div>
+          </div>
+      
+          <!-- Minecraft Movie News -->
+          <div class="news-item" data-category="Movies">
+            <div class="news-card">
+              <span class="category-badge movies">🎬 Movies</span>
+              <div class="image-container">
+                <img src="https://i.redd.it/a4pu8ndutofe1.jpeg" alt="Minecraft Movie promotional poster showing cubic landscape and characters" class="news-image">
+              </div>
+              <div class="news-desc">
+                <h3>Minecraft Movie Coming Soon</h3>
+                <p>Four misfits land in the Overworld, a cubic wonderland, and must team up with an unlikely crafter, Steve, to find their way home.</p>
+              </div>
+            </div>
+          </div>
+      
+          <!-- IPL 2025 News -->
+          <div class="news-item" data-category="Sports">
+            <div class="news-card">
+              <span class="category-badge sports">🏏 Sports</span>
+              <div class="image-container">
+                <img src="https://english.cdn.zeenews.com/sites/default/files/2025/02/11/1664221-ipl-2025-retention-rules.jpg" alt="IPL 2025 logo with cricket players in action" class="news-image">
+              </div>
+              <div class="news-desc">
+                <h3>IPL 2025 Season Preview</h3>
+                <p>"IPL 2025: A Season of Stars and Spectacle"</p>
+              </div>
+            </div>
+          </div>
+      
+          <!-- Fortnite News -->
+          <div class="news-item" data-category="Gaming">
+            <div class="news-card">
+              <span class="category-badge gaming">🎮 Gaming</span>
+              <div class="image-container">
+                <img src="https://m.media-amazon.com/images/M/MV5BMTZlMmIxM2EtN2Y4Zi00M2ZhLTk3NzgtNjJmZTU0MTQ3YjcwXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Fortnite game artwork featuring characters and battle scenes" class="news-image">
+              </div>
+              <div class="news-desc">
+                <h3>Fortnite Latest Updates</h3>
+                <p>Fortnite is an online video game and game platform developed by Epic Games.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <!-- Modal for expanded view -->
+        <div id="newsModal" class="modal">
+          <span class="close-modal">&times;</span>
+          <div class="modal-content">
+            <img id="modalImage" src="" alt="">
+            <div id="modalCategory" class="modal-category"></div>
+            <h2 id="modalTitle"></h2>
+            <p id="modalDesc"></p>
+          </div>
+        </div>
+      </section>
+    <br>
+    <br>
+   <hr>
+   <h1>MOVIES</h1>
+   <div class="scrolling">
+        <div class="poster">
+         <a target="_blank" href="#">
+             <img src="https://s1.dmcdn.net/v/W__I-1cvAxfiU-GoE/x1080" alt="MISTRY OF MOKSH ISLAND">
+           </a><br>
+       <button class="open-modal-btn" onclick="showModal('modal1')">MYSTRY OF MOKSH ISLAND</button>
+        </div>
+        <div class="poster">
+         <a target="_blank" href="#">
+             <img src="https://m.media-amazon.com/images/S/pv-target-images/ccf551a52ab869acbe150c99e3aa5a84ce3803f75e54ade929941269aa8b6710.jpg" alt="WEAK HERO">
+           </a><br>
+       <button class="open-modal-btn" onclick="showModal('modal2')">WEAK HERO</button>
+        </div>
+        <div class="poster">
+         <a target="_blank" href="#">
+             <img src="https://m.media-amazon.com/images/I/71goH8p2ENL._AC_UF1000,1000_QL80_.jpg" alt="SOLO LEVELING">
+           </a><br>
+       <button class="open-modal-btn" onclick="showModal('modal3')">SOLO LEVELING</button>
+        </div>
+        <div class="poster">
+         <a target="_blank" href="#">
+             <img src="https://images.indianexpress.com/2025/02/DABBA-CARTEL.jpg" alt="DABBA CARTLE">
+           </a><br>
+       <button class="open-modal-btn" onclick="showModal('modal4')">DABBA CARTLE</button>
+          </div>
+       </div>
+      <br>
+      <br>
+      <hr>
+      <h1>Top Gaming Streamers</h1>
+      <br>
+      <div class="scrolling">
+        <div class="poster">
+         <a target="_blank" href="#">
+             <img src="https://marketing4ecommerce.net/en/wp-content/uploads/sites/8/2023/03/historia-elrubius.jpg" alt="RUBIUS">
+           </a><br>
+       <button class="open-modal-btn" onclick="showModal('modal5')">RUBIUS</button>
+        </div>
+        <div class="poster">
+         <a target="_blank" href="#">
+             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR68fLojqq7lJA5cPv33_5KygSLYx7_EZrNcg&sr" alt="AURONPLAY">
+           </a><br>
+       <button class="open-modal-btn" onclick="showModal('modal6')">AURONPLAY</button>
+        </div>
+        <div class="poster">
+         <a target="_blank" href="#">
+             <img src="https://media.assettype.com/afkgaming%2F2023-05%2Fe28f3a24-6a43-4f0d-8294-1c68a6a186e5%2FCover_Image___Techno_Gamerz_Features_As_Playable_Game_Character_In_Battle_Stars.jpg?auto=format%2Ccompress&dpr=1.0&w=1200" alt="TECHNO GAMZER">
+           </a><br>
+       <button class="open-modal-btn" onclick="showModal('modal7')">TECHNO GAMZER</button>
+        </div>
+        <div class="poster">
+         <a target="_blank" href="#">
+             <img src="https://yt3.googleusercontent.com/ytc/AIdro_kCNu8QCIYlhtbGOmcJdRbEo4WZ9b7MrPly8mmZJdbBfP4=s900-c-k-c0x00ffffff-no-rj" alt="DYNAMO GAMING">
+           </a><br>
+       <button class="open-modal-btn" onclick="showModal('modal8')">DYNAMO GAMING</button>
+        </div>
+      </div>
+      <br>
+      <br>
+      <hr>
+      <h1>MUSIC</h1>
+      <div class="scrolling">
+      <div class="poster">
+        <a target="_blank" href="#">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3dallQnxFXcS2l7ET2w95YZAEGf-yiPm7Ow&s" alt="Javed Ali">
+          </a><br>
+      <button class="open-modal-btn" onclick="showModal('modal9')">Javed Ali</button>
+         </div>
+      <div class="poster">
+        <a target="_blank" href="#">
+            <img src="https://www.billboard.com/wp-content/uploads/2024/08/Lady-Gaga-Bruno-Mars-Die-With-A-Smile-screenshot-billboard-1548.jpg" alt="DIE WITH A SMILE">
+          </a><br>
+      <button class="open-modal-btn" onclick="showModal('modal10')">DIE WITH A SMILE</button>
+         </div>
+      <div class="poster">
+        <a target="_blank" href="#">
+            <img src="https://static.moviecrow.com/gallery/20240827/233438-Nilavuku%20En%20Mel%20Ennadi%20Kobam%20First%20Single%20Dhanush%20Priyanka%20Mohan%20Golden%20Sparrow%20GV%20Prakash%20%20.jpg" alt="GOLDEN SPARROW">
+          </a><br>
+      <button class="open-modal-btn" onclick="showModal('modal11')">GOLDEN SPARROW</button>
+         </div>
+      <div class="poster">
+        <a target="_blank" href="#">
+            <img src="https://c.saavncdn.com/430/Thangamagan-Tamil-2015-500x500.jpg" alt="Enna Solla">
+          </a><br>
+      <button class="open-modal-btn" onclick="showModal('modal12')">Enna Solla</button>
+         </div>
+    </div>
+      <br>
+      <br>
+      <hr>
+      <h1>SPORTS</h1>
+      <div class="scrolling">
+      <div class="poster">
+        <a target="_blank" href="#">
+            <img src="https://img.jagranjosh.com/images/2025/February/1322025/IPL-2025-schedule.webp" alt="IPL 2025">
+          </a><br>
+      <button class="open-modal-btn" onclick="showModal('modal13')">IPL 2025</button>
+         </div>
+      <div class="poster">
+        <a target="_blank" href="#">
+            <img src="https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/1096F/production/_133115976_gettyimages-1334885488.jpg" alt="Paris 2024">
+          </a><br>
+      <button class="open-modal-btn" onclick="showModal('modal14')">Paris 2024</button>
+         </div>
+      <div class="poster">
+        <a target="_blank" href="#">
+            <img src="https://imageio.forbes.com/specials-images/imageserve/666c0b3267235c4409185787/Spain-v-Northern-Ireland---International-Friendly/960x0.jpg?format=jpg&width=960" alt="Spain Euro 2024">
+          </a><br>
+      <button class="open-modal-btn" onclick="showModal('modal15')">Spain Euro 2024</button>
+         </div>
+      <div class="poster">
+        <a target="_blank" href="#">
+            <img src="https://www.paralympic.org/sites/default/files/2024-04/Philippa%20Johnson-Dwyer%2C%20South%20Africa%2C%20Equestrian.jpg" alt="Horse Riding">
+          </a><br>
+      <button class="open-modal-btn" onclick="showModal('modal16')">Horse Riding</button>
+         </div>
+      </div>
+      <br>
+      <br>
+      <hr>
+</div>
+
+<!-- Modal Overlay -->
+<div id="modal-overlay" class="modal-overlay" onclick="closeAllModals()">
+    <!-- Modals -->
+    <div id="modal1" class="modal">
+        <button class="close-modal-btn" onclick="closeModal('modal1')">X</button>
+        <div class="modal-poster">
+            <img src="https://s1.dmcdn.net/v/W__I-1cvAxfiU-GoE/x1080" alt="Mystry of Moks Island">
+        </div>
+        <div class="modal-content">
+            <h2 class="modal-title">Mystry of Moksh Island</h2>
+            <p class="modal-description">An animated adventure film that follows a young explorer's journey on a mysterious island.</p>
+            <div class="modal-buttons">
+                <button class="play-btn">▶ Play</button>
+                <button class="add-btn">+ Add to My List</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal2" class="modal">
+        <button class="close-modal-btn" onclick="closeModal('modal2')">X</button>
+        <div class="modal-poster">
+            <img src="https://m.media-amazon.com/images/S/pv-target-images/ccf551a52ab869acbe150c99e3aa5a84ce3803f75e54ade929941269aa8b6710.jpg" alt="Weak Hero">
+        </div>
+        <div class="modal-content">
+            <h2 class="modal-title">Weak Hero</h2>
+            <p class="modal-description">A gripping series about a seemingly weak high school student who uses his intelligence to fight against bullies.</p>
+            <div class="modal-buttons">
+                <button class="play-btn">▶ Play</button>
+                <button class="add-btn">+ Add to My List</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal3" class="modal">
+        <button class="close-modal-btn" onclick="closeModal('modal3')">X</button>
+        <div class="modal-poster">
+            <img src="https://m.media-amazon.com/images/I/71goH8p2ENL._AC_UF1000,1000_QL80_.jpg" alt="Solo Leveling">
+        </div>
+        <div class="modal-content">
+            <h2 class="modal-title">Solo Leveling</h2>
+            <p class="modal-description">An action-packed anime about a weak hunter who becomes one of the strongest in a world full of monsters.</p>
+            <div class="modal-buttons">
+                <button class="play-btn">▶ Play</button>
+                <button class="add-btn">+ Add to My List</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal4" class="modal">
+        <button class="close-modal-btn" onclick="closeModal('modal4')">X</button>
+        <div class="modal-poster">
+            <img src="https://images.indianexpress.com/2025/02/DABBA-CARTEL.jpg" alt="Dabba Cartle">
+        </div>
+        <div class="modal-content">
+            <h2 class="modal-title">Dabba Cartle</h2>
+            <p class="modal-description">A crime drama series following a group of housewives who start a unique underground operation.</p>
+            <div class="modal-buttons">
+                <button class="play-btn">▶ Play</button>
+                <button class="add-btn">+ Add to My List</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal5" class="modal">
+        <button class="close-modal-btn" onclick="closeModal('modal5')">X</button>
+        <div class="modal-poster">
+            <img src="https://marketing4ecommerce.net/en/wp-content/uploads/sites/8/2023/03/historia-elrubius.jpg" alt="RUBIUS">
+        </div>
+        <div class="modal-content">
+            <h2 class="modal-title">RUBIUS</h2>
+            <p class="modal-description">One of the most popular Spanish-speaking gaming content creators with millions of followers.</p>
+            <div class="modal-buttons">
+                <button class="play-btn">▶ Play</button>
+                <button class="add-btn">+ Add to My List</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal6" class="modal">
+        <button class="close-modal-btn" onclick="closeModal('modal6')">X</button>
+        <div class="modal-poster">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR68fLojqq7lJA5cPv33_5KygSLYx7_EZrNcg&sr" alt="AURONPLAY">
+        </div>
+        <div class="modal-content">
+            <h2 class="modal-title">AURONPLAY</h2>
+            <p class="modal-description">A famous Spanish Twitch streamer and YouTuber known for his commentary and gaming content.</p>
+            <div class="modal-buttons">
+                <button class="play-btn">▶ Play</button>
+                <button class="add-btn">+ Add to My List</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal7" class="modal">
+        <button class="close-modal-btn" onclick="closeModal('modal7')">X</button>
+        <div class="modal-poster">
+            <img src="https://media.assettype.com/afkgaming%2F2023-05%2Fe28f3a24-6a43-4f0d-8294-1c68a6a186e5%2FCover_Image___Techno_Gamerz_Features_As_Playable_Game_Character_In_Battle_Stars.jpg?auto=format%2Ccompress&dpr=1.0&w=1200" alt="TECHNO GAMZER">
+        </div>
+        <div class="modal-content">
+            <h2 class="modal-title">TECHNO GAMZER</h2>
+            <p class="modal-description">A popular Indian gaming content creator known for his GTA and Minecraft gameplay videos.</p>
+            <div class="modal-buttons">
+                <button class="play-btn">▶ Play</button>
+                <button class="add-btn">+ Add to My List</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal8" class="modal">
+        <button class="close-modal-btn" onclick="closeModal('modal8')">X</button>
+        <div class="modal-poster">
+            <img src="https://yt3.googleusercontent.com/ytc/AIdro_kCNu8QCIYlhtbGOmcJdRbEo4WZ9b7MrPly8mmZJdbBfP4=s900-c-k-c0x00ffffff-no-rj" alt="DYNAMO GAMING">
+        </div>
+        <div class="modal-content">
+            <h2 class="modal-title">DYNAMO GAMING</h2>
+            <p class="modal-description">One of India's top gaming streamers, known for his exceptional PUBG and Battlegrounds Mobile India gameplay.</p>
+            <div class="modal-buttons">
+                <button class="play-btn">▶ Play</button>
+                <button class="add-btn">+ Add to My List</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal9" class="modal">
+        <button class="close-modal-btn" onclick="closeModal('modal9')">X</button>
+        <div class="modal-poster">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3dallQnxFXcS2l7ET2w95YZAEGf-yiPm7Ow&s" alt="Javed Ali">
+        </div>
+        <div class="modal-content">
+            <h2 class="modal-title">Javed Ali</h2>
+            <p class="modal-description">A renowned Indian playback singer known for his soulful voice in Bollywood hits.</p>
+            <div class="modal-buttons">
+                <button class="play-btn">▶ Play</button>
+                <button class="add-btn">+ Add to My List</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal10" class="modal">
+        <button class="close-modal-btn" onclick="closeModal('modal10')">X</button>
+        <div class="modal-poster">
+            <img src="https://www.billboard.com/wp-content/uploads/2024/08/Lady-Gaga-Bruno-Mars-Die-With-A-Smile-screenshot-billboard-1548.jpg" alt="Die With A Smile">
+        </div>
+        <div class="modal-content">
+            <h2 class="modal-title">Die With A Smile</h2>
+            <p class="modal-description">A collaborative single by Lady Gaga and Bruno Mars that topped charts worldwide.</p>
+            <div class="modal-buttons">
+                <button class="play-btn">▶ Play</button>
+                <button class="add-btn">+ Add to My List</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal11" class="modal">
+        <button class="close-modal-btn" onclick="closeModal('modal11')">X</button>
+        <div class="modal-poster">
+            <img src="https://static.moviecrow.com/gallery/20240827/233438-Nilavuku%20En%20Mel%20Ennadi%20Kobam%20First%20Single%20Dhanush%20Priyanka%20Mohan%20Golden%20Sparrow%20GV%20Prakash%20%20.jpg" alt="Golden Sparrow">
+        </div>
+        <div class="modal-content">
+            <h2 class="modal-title">Golden Sparrow</h2>
+            <p class="modal-description">A hit Tamil song featuring Dhanush and Priyanka Mohan, composed by GV Prakash.</p>
+            <div class="modal-buttons">
+                <button class="play-btn">▶ Play</button>
+                <button class="add-btn">+ Add to My List</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal12" class="modal">
+        <button class="close-modal-btn" onclick="closeModal('modal12')">X</button>
+        <div class="modal-poster">
+            <img src="https://c.saavncdn.com/430/Thangamagan-Tamil-2015-500x500.jpg" alt="Enna Solla">
+        </div>
+        <div class="modal-content">
+            <h2 class="modal-title">Enna Solla</h2>
+            <p class="modal-description">A beautiful Tamil romantic song from the movie Thangamagan that captured hearts.</p>
+            <div class="modal-buttons">
+                <button class="play-btn">▶ Play</button>
+                <button class="add-btn">+ Add to My List</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal13" class="modal">
+        <button class="close-modal-btn" onclick="closeModal('modal13')">X</button>
+        <div class="modal-poster">
+            <img src="https://img.jagranjosh.com/images/2025/February/1322025/IPL-2025-schedule.webp" alt="IPL 2025">
+        </div>
+        <div class="modal-content">
+            <h2 class="modal-title">IPL 2025</h2>
+            <p class="modal-description">The upcoming season of India's biggest cricket league featuring top international players.</p>
+            <div class="modal-buttons">
+                <button class="play-btn">▶ Play</button>
+                <button class="add-btn">+ Add to My List</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal14" class="modal">
+        <button class="close-modal-btn" onclick="closeModal('modal14')">X</button>
+        <div class="modal-poster">
+            <img src="https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/1096F/production/_133115976_gettyimages-1334885488.jpg" alt="Paris 2024">
+        </div>
+        <div class="modal-content">
+            <h2 class="modal-title">Paris 2024</h2>
+            <p class="modal-description">Highlights from the Summer Olympic Games held in Paris, featuring world-class athletes.</p>
+            <div class="modal-buttons">
+                <button class="play-btn">▶ Play</button>
+                <button class="add-btn">+ Add to My List</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal15" class="modal">
+        <button class="close-modal-btn" onclick="closeModal('modal15')">X</button>
+        <div class="modal-poster">
+            <img src="https://imageio.forbes.com/specials-images/imageserve/666c0b3267235c4409185787/Spain-v-Northern-Ireland---International-Friendly/960x0.jpg?format=jpg&width=960" alt="Spain Euro 2024">
+        </div>
+        <div class="modal-content">
+            <h2 class="modal-title">Spain Euro 2024</h2>
+            <p class="modal-description">Coverage of Spain's journey through the UEFA European Championship tournament.</p>
+            <div class="modal-buttons">
+                <button class="play-btn">▶ Play</button>
+                <button class="add-btn">+ Add to My List</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal16" class="modal">
+        <button class="close-modal-btn" onclick="closeModal('modal16')">X</button>
+        <div class="modal-poster">
+            <img src="https://www.paralympic.org/sites/default/files/2024-04/Philippa%20Johnson-Dwyer%2C%20South%20Africa%2C%20Equestrian.jpg" alt="HORSE RIDING">
+        </div>
+        <div class="modal-content">
+            <h2 class="modal-title">Horse Riding</h2>
+            <p class="modal-description">Coverage of equestrian events featuring top riders from around the world.</p>
+            <div class="modal-buttons">
+                <button class="play-btn">▶ Play</button>
+                <button class="add-btn">+ Add to My List</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    
+    function openNav() {
+        document.getElementById("mySidebar").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+    }
+    
+    // Show a specific modal
+    function showModal(modalId) {
+        document.getElementById(modalId).style.display = 'block';
+        document.getElementById('modal-overlay').style.display = 'block';
+        // Prevent background scrolling when modal is open
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Close a specific modal
+    function closeModal(modalId) {
+        document.getElementById(modalId).style.display = 'none';
+        document.getElementById('modal-overlay').style.display = 'none';
+        // Restore scrolling
+        document.body.style.overflow = 'auto';
+    }
+
+    // Close all modals when clicking the overlay
+    function closeAllModals() {
+        const modals = document.querySelectorAll('.modal');
+        modals.forEach(modal => modal.style.display = 'none');
+        document.getElementById('modal-overlay').style.display = 'none';
+        // Restore scrolling
+        document.body.style.overflow = 'auto';
+    }
+
+      // Wait for DOM to be fully loaded
+      document.addEventListener('DOMContentLoaded', function() {
+      // Get modal elements
+      const modal = document.getElementById('newsModal');
+      const modalImg = document.getElementById('modalImage');
+      const modalCategory = document.getElementById('modalCategory');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalDesc = document.getElementById('modalDesc');
+      const closeModal = document.querySelector('.close-modal');
+      
+      // Add animation class to each news item with staggered delay
+      const newsItems = document.querySelectorAll('.news-item');
+      newsItems.forEach((item, index) => {
+        item.style.animation = `fadeInUp 0.5s ease-out ${index * 0.1}s forwards`;
+        item.style.opacity = '0';
+      });
+  
+      // Add click event to all news cards
+      const newsCards = document.querySelectorAll('.news-card');
+      newsCards.forEach(card => {
+        card.addEventListener('click', function() {
+          const img = this.querySelector('.news-image');
+          const title = this.querySelector('h3').textContent;
+          const desc = this.querySelector('p').textContent;
+          const category = this.parentElement.getAttribute('data-category');
+          const categoryBadge = this.querySelector('.category-badge');
+          
+          // Populate modal
+          modalImg.src = img.src;
+          modalImg.alt = img.alt;
+          modalTitle.textContent = title;
+          modalDesc.textContent = desc;
+          modalCategory.textContent = categoryBadge.textContent;
+          modalCategory.className = 'modal-category ' + categoryBadge.className.split(' ')[1];
+          
+          // Display modal
+          modal.style.display = 'block';
+          document.body.style.overflow = 'hidden'; // Prevent scrolling
+        });
+      });
+  
+      // Add keyboard navigation for news items
+      newsCards.forEach((card, index) => {
+        card.setAttribute('tabindex', '0');
+        
+        card.addEventListener('keydown', function(e) {
+          // Enter or Space to open modal
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            card.click();
+          }
+        });
+      });
+  
+      // Close modal when clicking the X
+      closeModal.addEventListener('click', function() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Restore scrolling
+      });
+  
+      // Close modal when clicking outside the content
+      window.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          modal.style.display = 'none';
+          document.body.style.overflow = 'auto';
+        }
+      });
+  
+      // Close modal with Escape key
+      window.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.style.display === 'block') {
+          modal.style.display = 'none';
+          document.body.style.overflow = 'auto';
+        }
+      });
+    });
+ 
+ 
+</script>
+<footer>
+    Copyright © 2025 FanZone. All rights reserved.
+                <p>&copy; 2025 FanZone. All rights reserved.</p>
+                 <p>FanZone @&copy; 2025 | Created by Danta Pratyushan Sai</p>
+        <p>This is a project website and all news articles are fictional</p>
+    <marquee>Latest fan updates and highlights - Updated daily!</marquee>
+  </footer>
+</body>
+</html>

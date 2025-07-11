@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to FanZone</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #3366cc;
+      color: white;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .header {
+      padding: 10px;
+      margin-bottom: 30px;
+    }
+    
+    .logo {
+      font-size: 36px;
+      font-weight: bold;
+      color: yellow;
+      text-shadow: 2px 2px 4px #000000;
+    }
+    
+    .main-title {
+      font-size: 48px;
+      margin-bottom: 10px;
+      color: white;
+      text-shadow: 3px 3px 5px #000000;
+    }
+    
+    .tagline {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    
+    .description {
+      width: 80%;
+      margin: 0 auto;
+      font-size: 18px;
+      line-height: 1.5;
+      margin-bottom: 40px;
+    }
+    
+    .button-container {
+      margin-bottom: 50px;
+    }
+    
+    .enter-button {
+      background-color: #ff9900;
+      color: white;
+      border: none;
+      padding: 20px 40px;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 8px;
+      box-shadow: 0 4px 0 #cc7700;
+    }
+    
+    .enter-button:hover {
+      background-color: #ffaa33;
+    }
+    
+    .enter-button:active { 
+      transform: translateY(4px);
+      box-shadow: 0 0 0 #cc7700;
+    }
+    
+    .categories {
+      margin-top: 50px;
+    }
+    
+    .categories-title {
+      font-size: 32px;
+      margin-bottom: 30px;
+      text-decoration: underline;
+    }
+    
+    .category-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    
+    .category {
+      background-color: #0044aa;
+      width: 200px;
+      padding: 20px;
+      margin-bottom: 20px;
+      border: 3px solid white;
+      border-radius: 10px;
+      text-decoration: none;
+      color: white;
+      display: block;
+    }
+    
+    .category:hover {
+      background-color: #005599;
+    }
+    
+    .category-icon {
+      font-size: 50px;
+      margin-bottom: 10px;
+    }
+    
+    .category-name {
+      font-size: 22px;
+      margin: 10px 0;
+    }
+    
+    .category-desc {
+      font-size: 14px;
+    }
+    
+    footer {
+      margin-top: 50px;
+      font-size: 14px;
+    }
+    
+    /* Very basic media query */
+    @media (max-width: 600px) {
+      .main-title {
+        font-size: 36px;
+      }
+      
+      .category {
+        width: 100%;
+      }
+      
+      .enter-button {
+        width: 80%;
+        padding: 15px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">FanZone</div>
+  </div>
+  
+  <h1 class="main-title">Welcome to FanZone!</h1>
+  <h2 class="tagline">Where Passion Meets Community</h2>
+  
+  <p class="description">
+    Join the ultimate fan community platform celebrating all things entertainment and sports. 
+    Discover the latest in music, movies, sports, gaming, events, participate in polls, 
+    and stay updated with fan-centric news. FanZone is your digital home for all fandoms!
+  </p>
+  
+  <div class="button-container">
+    <a href="file:///C:/Users/praty/OneDrive/Desktop/STUDY/html/uidweb/home%20page/home%20page%202.html">
+    <button class="enter-button">ENTER FANZONE</button>
+    </a>
+  </div>
+  
+  <div class="categories">
+    <h2 class="categories-title">Explore Categories</h2>
+    
+    <div class="category-container">
+      <a href="#music" class="category">
+        <div class="category-icon">🎵</div>
+        <h3 class="category-name">Music</h3>
+        <p class="category-desc">Follow your favorite artists and discover new releases</p>
+      </a>
+      
+      <a href="#movies" class="category">
+        <div class="category-icon">🎬</div>
+        <h3 class="category-name">Movies</h3>
+        <p class="category-desc">Get the scoop on blockbusters and indie gems</p>
+      </a>
+      
+      <a href="#sports" class="category">
+        <div class="category-icon">⚽</div>
+        <h3 class="category-name">Sports</h3>
+        <p class="category-desc">Cheer for your teams across all major leagues</p>
+      </a>
+      
+      <a href="#gaming" class="category">
+        <div class="category-icon">🎮</div>
+        <h3 class="category-name">Gaming</h3>
+        <p class="category-desc">Level up with gaming news and community</p>
+      </a>
+      
+      <a href="#events" class="category">
+        <div class="category-icon">📅</div>
+        <h3 class="category-name">Events</h3>
+        <p class="category-desc">Never miss a concert, convention or meetup</p>
+      </a>
+      
+      <a href="#polls" class="category">
+        <div class="category-icon">📊</div>
+        <h3 class="category-name">Polls</h3>
+        <p class="category-desc">Vote and share your opinions with fellow fans</p>
+      </a>
+    </div>
+  </div>
+  
+  <footer>
+    Copyright © 2025 FanZone. All rights reserved.
+    <br>
+    <marquee>Welcome to FanZone - The best fan community on the web!</marquee>
+  </footer>
+</body>
+</html>

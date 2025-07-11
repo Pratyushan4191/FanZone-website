@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>MusicVerse | For True Music Fans</title>
+    <style>
+        :root {
+            --primary-color: #6200ea;
+            --secondary-color: #3700b3;
+            --accent-color: #03dac6;
+            --text-color: #333333;
+            --light-bg: #f5f5f5;
+            --dark-bg: #121212;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        .logo span {
+            color: var(--accent-color);
+        }
+        
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .auth-button {
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .sign-in {
+            background-color: transparent;
+            border: 1px solid var(--white);
+            color: var(--white);
+        }
+        
+        .sign-up {
+            background-color: var(--accent-color);
+            border: none;
+            color: var(--dark-bg);
+        }
+        
+        .auth-button:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/api/placeholder/1200/400') center/cover no-repeat;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--accent-color);
+            color: var(--dark-bg);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        section {
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        /* Genres Section */
+        .genres-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .genre-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .genre-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .genre-image {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .genre-content {
+            padding: 1.5rem;
+        }
+        
+        .genre-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .genre-description {
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+        
+        .genre-info {
+            margin-top: 1rem;
+        }
+        
+        .info-item {
+            margin-bottom: 0.5rem;
+        }
+        
+        .info-title {
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+        
+        .view-more {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        /* About Us Section */
+        .about-us {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .about-image {
+            flex: 1;
+            max-width: 500px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .about-content {
+            flex: 1;
+        }
+        
+        .about-content h2 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .about-content p {
+            margin-bottom: 1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-bg);
+            color: var(--white);
+            padding: 3rem 0;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-link {
+            background-color: var(--primary-color);
+            color: var(--white);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: var(--accent-color);
+            color: var(--dark-bg);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Responsive Adjustments */
+        @media screen and (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            nav ul {
+                margin: 1rem 0;
+            }
+            
+            .about-us {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                max-width: 100%;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+        .back-arrow {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  background-color: #1e3d59;
+  color: #ffffff;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: background-color 0.3s ease;
+}
+
+.back-arrow i {
+  margin-right: 6px;
+}
+
+.back-arrow:hover {
+  background-color: #ff6e40;
+}
+
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+          <a href="file:///C:/Users/praty/OneDrive/Desktop/STUDY/html/uidweb/home%20page/home%20page%202.html" class="back-arrow" style="align-items: end;">
+        <i class="fas fa-arrow-left"></i> Home
+      </a>    
+        <div class="header-container">
+            <div class="logo">FanZone<span>MusicVerse</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#genres">Genres</a></li>
+                    <li><a href="#artists">Artists</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="#signin" class="auth-button sign-in">Sign In</a>
+                <a href="#signup" class="auth-button sign-up">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Discover Your Musical Universe</h1>
+            <p>Explore different genres, discover new artists, and connect with other music enthusiasts on MusicVerse.</p>
+            <a href="#genres" class="cta-button">Explore Genres</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Genres Section -->
+        <section id="genres">
+            <h2 class="section-title">Music Genres</h2>
+            <div class="genres-container">
+                <!-- Rock Genre -->
+                <div class="genre-card">
+                    <img src="https://www.creativefabrica.com/wp-content/uploads/2024/05/12/Rock-Music-Fonts-97465024-1.png" alt="Rock Music" class="genre-image">
+                    <div class="genre-content">
+                        <h3 class="genre-title">Rock</h3>
+                        <p class="genre-description">Rock music is characterized by a strong beat, electric guitars, and often rebellious or countercultural themes. Emerging in the 1950s, it has evolved into countless subgenres.</p>
+                        <div class="genre-info">
+                            <div class="info-item">
+                                <span class="info-title">Popular Artists:</span> Led Zeppelin, Queen, The Beatles
+                            </div>
+                            <div class="info-item">
+                                <span class="info-title">Famous Song:</span> "Stairway to Heaven" by Led Zeppelin
+                            </div>
+                        </div>
+                        <a href="#" class="view-more">Learn More →</a>
+                    </div>
+                </div>
+
+                <!-- Hip Hop Genre -->
+                <div class="genre-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhsW77yyfzsPvtOwquLpxbzQhjVOVehkjk-A&s" alt="Hip Hop Music" class="genre-image">
+                    <div class="genre-content">
+                        <h3 class="genre-title">Hip Hop</h3>
+                        <p class="genre-description">Hip hop emerged from the Bronx in the 1970s and features rhythmic vocals delivered over beats. It encompasses elements like MCing, DJing, breakdancing, and graffiti art.</p>
+                        <div class="genre-info">
+                            <div class="info-item">
+                                <span class="info-title">Popular Artists:</span> Kendrick Lamar, Jay-Z, Nas
+                            </div>
+                            <div class="info-item">
+                                <span class="info-title">Famous Song:</span> "Juicy" by The Notorious B.I.G.
+                            </div>
+                        </div>
+                        <a href="#" class="view-more">Learn More →</a>
+                    </div>
+                </div>
+
+                <!-- Jazz Genre -->
+                <div class="genre-card">
+                    <img src="https://static.vecteezy.com/system/resources/previews/002/043/469/non_2x/jazz-music-illustration-vector.jpg" alt="Jazz Music" class="genre-image">
+                    <div class="genre-content">
+                        <h3 class="genre-title">Jazz</h3>
+                        <p class="genre-description">Jazz originated in New Orleans in the late 19th century, characterized by swing notes, polyrhythms, improvisation, and a unique blend of European harmony with African rhythmic elements.</p>
+                        <div class="genre-info">
+                            <div class="info-item">
+                                <span class="info-title">Popular Artists:</span> Miles Davis, John Coltrane, Louis Armstrong
+                            </div>
+                            <div class="info-item">
+                                <span class="info-title">Famous Song:</span> "Take Five" by Dave Brubeck
+                            </div>
+                        </div>
+                        <a href="#" class="view-more">Learn More →</a>
+                    </div>
+                </div>
+
+                <!-- Electronic Genre -->
+                <div class="genre-card">
+                    <img src="https://www.esmadrid.com/sites/default/files/styles/content_type_full/public/editorial/gettyimages-638549776.jpg?itok=ddwyjzid" alt="Electronic Music" class="genre-image">
+                    <div class="genre-content">
+                        <h3 class="genre-title">Electronic</h3>
+                        <p class="genre-description">Electronic music uses electronic instruments and technology to create sounds. It encompasses a wide range of styles including house, techno, ambient, and EDM.</p>
+                        <div class="genre-info">
+                            <div class="info-item">
+                                <span class="info-title">Popular Artists:</span> Daft Punk, Aphex Twin, Kraftwerk
+                            </div>
+                            <div class="info-item">
+                                <span class="info-title">Famous Song:</span> "One More Time" by Daft Punk
+                            </div>
+                        </div>
+                        <a href="#" class="view-more">Learn More →</a>
+                    </div>
+                </div>
+
+                <!-- Classical Genre -->
+                <div class="genre-card">
+                    <img src="https://saugusscroll.org/wp-content/uploads/2021/11/classical-music-month.jpeg" alt="Classical Music" class="genre-image">
+                    <div class="genre-content">
+                        <h3 class="genre-title">Classical</h3>
+                        <p class="genre-description">Classical music is art music produced in the Western musical tradition spanning from roughly the 11th century to the present day, including symphonies, operas, and chamber music.</p>
+                        <div class="genre-info">
+                            <div class="info-item">
+                                <span class="info-title">Popular Artists:</span> Mozart, Beethoven, Bach
+                            </div>
+                            <div class="info-item">
+                                <span class="info-title">Famous Song:</span> "Symphony No. 9" by Beethoven
+                            </div>
+                        </div>
+                        <a href="#" class="view-more">Learn More →</a>
+                    </div>
+                </div>
+
+                <!-- Pop Genre -->
+                <div class="genre-card">
+                    <img src="https://i.scdn.co/image/ab67616d0000b273e45d89dfb436c0b2cd55c8fe" alt="Pop Music" class="genre-image">
+                    <div class="genre-content">
+                        <h3 class="genre-title">Pop</h3>
+                        <p class="genre-description">Pop music is characterized by catchy melodies, repetitive structures, and broad appeal. It evolved from rock and roll in the United States and United Kingdom during the mid-1950s.</p>
+                        <div class="genre-info">
+                            <div class="info-item">
+                                <span class="info-title">Popular Artists:</span> Michael Jackson, Madonna, Taylor Swift
+                            </div>
+                            <div class="info-item">
+                                <span class="info-title">Famous Song:</span> "Billie Jean" by Michael Jackson
+                            </div>
+                        </div>
+                        <a href="#" class="view-more">Learn More →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="about-us">
+            <div class="about-image">
+                
+            </div>
+            <div class="about-content">
+                <h2 class="section-title">About Us</h2>
+                <p>MusicVerse was founded by a group of passionate music enthusiasts who wanted to create a community where fans could explore, discover, and connect through their love of music.</p>
+                <p>Our mission is to provide a comprehensive resource for learning about different music genres, discovering new artists, and engaging with fellow music lovers from around the world.</p>
+                <p>Whether you're a casual listener or a dedicated audiophile, MusicVerse offers something for everyone. From in-depth genre guides to artist spotlights, we're here to enhance your musical journey.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>MusicVerse</h3>
+                <p>Your ultimate destination for music discovery and appreciation. Connect with fellow enthusiasts and expand your musical horizons.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">F</a>
+                    <a href="#" class="social-link">T</a>
+                    <a href="#" class="social-link">I</a>
+                    <a href="#" class="social-link">Y</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#genres">Genres</a></li>
+                    <li><a href="#artists">Artists</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Account</h3>
+                <ul>
+                    <li><a href="#signin">Sign In</a></li>
+                    <li><a href="#signup">Sign Up</a></li>
+                    <li><a href="#profile">My Profile</a></li>
+                    <li><a href="#favorites">My Favorites</a></li>
+                    <li><a href="#settings">Settings</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li>Email: info@musicverse.com</li>
+                    <li>Phone: (123) 456-7890</li>
+                    <li>Address: 123 Music Street, Melody City</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 MusicVerse. All rights reserved.</p>
+             <p>FanZone @&copy; 2025 | Created by Danta Pratyushan Sai</p>
+        <p>This is a project website and all news articles are fictional</p>
+        </div>
+    </footer>
+</body>
+</html>

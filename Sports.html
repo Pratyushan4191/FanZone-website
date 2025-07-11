@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Arena - FanZone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color:#7886C7;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: #244e8e;
+    padding: 1rem 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo h2 {
+    color: #ff6b35;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover {
+    color: #ff6b35;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #ff6b35;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: #ffffff;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+/* Hero Section */
+.hero {
+    background:#4f6d9a;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 80px;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #ff6b35, #f7931e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #ff6b35, #f7931e);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #ff6b35;
+    border: 2px solid #ff6b35;
+}
+
+.btn-secondary:hover {
+    background: #ff6b35;
+    color: white;
+}
+
+/* Section Titles */
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    background: linear-gradient(45deg, #ff6b35, #f7931e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Sports Categories */
+.sports-categories {
+    padding: 5rem 0;
+    background-color:#0044aa;
+}
+
+.sports-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.sport-card {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #333;
+}
+
+.sport-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(255, 107, 53, 0.2);
+}
+
+.sport-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.sport-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #ff6b35;
+}
+
+.sport-card p {
+    opacity: 0.8;
+    margin-bottom: 1rem;
+}
+
+.sport-stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+/* Gallery Section */
+.gallery {
+    padding: 5rem 0;
+    background-color: #0658d1;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.8));
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-overlay h3 {
+    color: #ff6b35;
+    margin-bottom: 0.5rem;
+}
+
+.gallery-overlay p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+}
+
+/* Scores Section */
+.scores {
+    padding: 5rem 0;
+    background-color: #045bdd;
+}
+
+.scores-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.score-card {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid #333;
+    transition: transform 0.3s ease;
+}
+
+.score-card:hover {
+    transform: translateY(-5px);
+}
+
+.match-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.sport-type {
+    color: #ff6b35;
+    font-weight: bold;
+}
+
+.match-status {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.match-status.live {
+    background-color: #ff4444;
+    color: white;
+}
+
+.match-status.finished {
+    background-color: #666666;
+    color: white;
+}
+
+.teams {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.team-name {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.team-score {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ff6b35;
+}
+
+.vs {
+    font-size: 1.2rem;
+    opacity: 0.7;
+}
+
+.match-time {
+    text-align: center;
+    opacity: 0.8;
+    font-size: 0.9rem;
+}
+
+/* Reviews Section */
+.reviews {
+    padding: 5rem 0;
+    background-color: #0463f1;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.review-card {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid #333;
+    transition: transform 0.3s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.review-header h3 {
+    color: #ff6b35;
+}
+
+.rating {
+    font-size: 1.2rem;
+}
+
+.review-card p {
+    margin-bottom: 1rem;
+    opacity: 0.9;
+    font-style: italic;
+}
+
+.review-footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+/* Footer */
+.footer {
+    background-color: #0367fd;
+    padding: 3rem 0 1rem;
+    border-top: 1px solid #333;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section h3,
+.footer-section h4 {
+    color: #ff6b35;
+    margin-bottom: 1rem;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section a {
+    color: #0a0a0a;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: #ff6b35;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid #333;
+    opacity: 0.7;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: #1a1a1a;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        padding: 2rem 0;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-menu a {
+        padding: 1rem 0;
+        display: block;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    .nav-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-toggle.active .bar:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+    }
+
+    .nav-toggle.active .bar:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .scores-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .teams {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sports-grid {
+        grid-template-columns: 1fr;
+    }
+}
+span
+{
+    color:red;
+}
+        .back-arrow {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  background-color: #1e3d59;
+  color: #ffffff;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: background-color 0.3s ease;
+}
+
+.back-arrow i {
+  margin-right: 6px;
+}
+
+.back-arrow:hover {
+  background-color: #ff6e40;
+}
+
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->   
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>FanZone<span>SportsArena</span></h2>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#sports" class="nav-link">Sports</a>
+                <a href="#scores" class="nav-link">Scores</a>
+                <a href="#reviews" class="nav-link">Reviews</a>
+                <a href="#events" class="nav-link">Events</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+      <a href="file:///C:/Users/praty/OneDrive/Desktop/STUDY/html/uidweb/home%20page/home%20page%202.html" class="back-arrow" style="align-items: end;">
+        <i class="fas fa-arrow-left"></i> Home
+      </a>   
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Sports Arena</h1>
+            <p>Your ultimate destination for sports highlights, scores, and reviews</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary">Latest Scores</button>
+                <button class="btn btn-secondary">Watch Highlights</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sports Categories -->
+    <section class="sports-categories" id="sports">
+        <div class="container">
+            <h2 class="section-title">Featured Sports</h2>
+            <div class="sports-grid">
+                <div class="sport-card">
+                    <div class="sport-icon">🏸</div>
+                    <h3>Badminton</h3>
+                    <p>Indoor Sport</p>
+                    <div class="sport-stats">
+                        <span>Live Matches: 12</span>
+                        <span>Players: 245</span>
+                    </div>
+                </div>
+                <div class="sport-card">
+                    <div class="sport-icon">⚽</div>
+                    <h3>Football</h3>
+                    <p>Outdoor Sport</p>
+                    <div class="sport-stats">
+                        <span>Live Matches: 8</span>
+                        <span>Players: 1,247</span>
+                    </div>
+                </div>
+                <div class="sport-card">
+                    <div class="sport-icon">🏀</div>
+                    <h3>Basketball</h3>
+                    <p>Common Sport</p>
+                    <div class="sport-stats">
+                        <span>Live Matches: 15</span>
+                        <span>Players: 856</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game Highlights Gallery -->
+    <section class="gallery" id="highlights">
+        <div class="container">
+            <h2 class="section-title">Game Highlights & Hero Moments</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/f/f0/2021_UEFA_Champions_League_Final_programme.png" alt="Championship Final">
+                    <div class="gallery-overlay">
+                        <h3>Championship Final</h3>
+                        <p>Epic showdown between rivals</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://media.cnn.com/api/v1/images/stellar/prod/230920051103-01-lazio-ucl-091923.jpg?c=16x9&q=h_833,w_1480,c_fill" alt="Last Minute Goal">
+                    <div class="gallery-overlay">
+                        <h3>Last Minute Goal</h3>
+                        <p>Dramatic finish to remember</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://static.owayo-cdn.com/newhp/img/magazin/basketballdunkEN/practice-regimen-perfect-slam-dunk-670px.jpg" alt="Perfect Slam Dunk">
+                    <div class="gallery-overlay">
+                        <h3>Perfect Slam Dunk</h3>
+                        <p>Incredible athletic display</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://cdn.prod.website-files.com/5ca5fe687e34be0992df1fbe/5dfaf8587e73df122fd92925_Backhand%20smash%20technique.jpg" alt="Winning Smash">
+                    <div class="gallery-overlay">
+                        <h3>Winning Smash</h3>
+                        <p>Badminton brilliance at its best</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://c8.alamy.com/comp/2XFYRAF/mumbai-india-july-4-indian-cricket-team-dance-as-they-celebrate-t20-world-cup-win-with-fans-at-wankhede-stadium-on-july-4-2024-in-mumbai-india-photo-by-prakash-parsekarhindustan-timessipa-usa-2XFYRAF.jpg" alt="Team Celebration">
+                    <div class="gallery-overlay">
+                        <h3>Team Celebration</h3>
+                        <p>Victory dance after the win</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTApKL-ID_wHd6ayK3O4r-szbmKEueWUN5k0A&s" alt="Record Break">
+                    <div class="gallery-overlay">
+                        <h3>Record Break</h3>
+                        <p>New milestone achieved</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfwbAUFm4xyyo9YprbK1G3orkrQbDtYNCufQ&s" alt="Penalty Save">
+                    <div class="gallery-overlay">
+                        <h3>Penalty Save</h3>
+                        <p>Goalkeeper's heroic moment</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDn7yzdbKu6xuq9VUWLJt2v55QJ7eNGV75Tw&s" alt="Triple Threat">
+                    <div class="gallery-overlay">
+                        <h3>Triple Threat</h3>
+                        <p>Three-pointer from downtown</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Scores Section -->
+    <section class="scores" id="scores">
+        <div class="container">
+            <h2 class="section-title">Live Scores</h2>
+            <div class="scores-grid">
+                <div class="score-card">
+                    <div class="match-info">
+                        <span class="sport-type">Football</span>
+                        <span class="match-status live">LIVE</span>
+                    </div>
+                    <div class="teams">
+                        <div class="team">
+                            <span class="team-name">Arsenal</span>
+                            <span class="team-score">2</span>
+                        </div>
+                        <div class="vs">VS</div>
+                        <div class="team">
+                            <span class="team-name">Chelsea</span>
+                            <span class="team-score">1</span>
+                        </div>
+                    </div>
+                    <div class="match-time">67' - 2nd Half</div>
+                </div>
+                <div class="score-card">
+                    <div class="match-info">
+                        <span class="sport-type">Basketball</span>
+                        <span class="match-status live">LIVE</span>
+                    </div>
+                    <div class="teams">
+                        <div class="team">
+                            <span class="team-name">Lakers</span>
+                            <span class="team-score">98</span>
+                        </div>
+                        <div class="vs">VS</div>
+                        <div class="team">
+                            <span class="team-name">Warriors</span>
+                            <span class="team-score">102</span>
+                        </div>
+                    </div>
+                    <div class="match-time">Q4 - 2:34</div>
+                </div>
+                <div class="score-card">
+                    <div class="match-info">
+                        <span class="sport-type">Badminton</span>
+                        <span class="match-status finished">FINISHED</span>
+                    </div>
+                    <div class="teams">
+                        <div class="team">
+                            <span class="team-name">Lin Dan</span>
+                            <span class="team-score">21</span>
+                        </div>
+                        <div class="vs">VS</div>
+                        <div class="team">
+                            <span class="team-name">Lee Chong Wei</span>
+                            <span class="team-score">19</span>
+                        </div>
+                    </div>
+                    <div class="match-time">Set 2 - Final</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <h2 class="section-title">Player Reviews & Analysis</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <h3>Lionel Messi</h3>
+                        <div class="rating">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <p>"Exceptional performance in the recent match. His vision and ball control continue to amaze fans worldwide."</p>
+                    <div class="review-footer">
+                        <span class="reviewer">By Sports Analyst</span>
+                        <span class="review-date">2 days ago</span>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <h3>LeBron James</h3>
+                        <div class="rating">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <p>"At 39, still dominating the court. His leadership and basketball IQ are unmatched in today's game."</p>
+                    <div class="review-footer">
+                        <span class="reviewer">By NBA Expert</span>
+                        <span class="review-date">1 week ago</span>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <h3>Viktor Axelsen</h3>
+                        <div class="rating">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <p>"The Danish badminton star continues to set new standards with his powerful smashes and court coverage."</p>
+                    <div class="review-footer">
+                        <span class="reviewer">By Badminton Weekly</span>
+                        <span class="review-date">3 days ago</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>FanZone</h3>
+                    <p>Your ultimate sports destination</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#sports">Sports</a></li>
+                        <li><a href="#scores">Scores</a></li>
+                        <li><a href="#reviews">Reviews</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: info@fanzone.com</p>
+                    <p>Phone: +1 (555) 123-4567</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 FanZone. All rights reserved.</p>
+                 <p>FanZone @&copy; 2025 | Created by Danta Pratyushan Sai</p>
+        <p>This is a project website and all news articles are fictional</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    
+    navToggle.addEventListener('click', function() {
+        navMenu.classList.toggle('active');
+        navToggle.classList.toggle('active');
+    });
+    
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function() {
+            navMenu.classList.remove('active');
+            navToggle.classList.remove('active');
+        });
+    });
+    
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!navToggle.contains(event.target) && !navMenu.contains(event.target)) {
+            navMenu.classList.remove('active');
+            navToggle.classList.remove('active');
+        }
+    });
+});
+
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Gallery Animation Enhancement
+document.addEventListener('DOMContentLoaded', function() {
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    
+    galleryItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05) rotateZ(1deg)';
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1) rotateZ(0deg)';
+        });
+    });
+});
+
+// Intersection Observer for animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, observerOptions);
+
+// Observe elements for scroll animations
+document.addEventListener('DOMContentLoaded', function() {
+    const animatedElements = document.querySelectorAll('.sport-card, .gallery-item, .score-card, .review-card');
+    
+    animatedElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    });
+});
+
+// Live Score Updates (Simulated)
+function updateLiveScores() {
+    const liveScores = document.querySelectorAll('.match-status.live');
+    
+    liveScores.forEach(status => {
+        const scoreCard = status.closest('.score-card');
+        const teamScores = scoreCard.querySelectorAll('.team-score');
+        
+        // Randomly update scores for live matches
+        if (Math.random() > 0.95) { // 5% chance to update
+            teamScores.forEach(score => {
+                const currentScore = parseInt(score.textContent);
+                if (Math.random() > 0.7) { // 30% chance to increment
+                    score.textContent = currentScore + 1;
+                    // Add flash effect
+                    score.style.color = '#00ff00';
+                    setTimeout(() => {
+                        score.style.color = '#ff6b35';
+                    }, 1000);
+                }
+            });
+        }
+    });
+}
+
+setInterval(updateLiveScores, 10000);
+document.addEventListener('DOMContentLoaded', function() {
+    const latestScoresBtn = document.querySelector('.btn-primary');
+    const watchHighlightsBtn = document.querySelector('.btn-secondary');
+})
+    </script>
+</body>
+</html>

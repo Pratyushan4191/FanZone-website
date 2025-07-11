@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Movie Explorer</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0f172a; color: #ffffff; display: flex; flex-direction: column; }
+    .sidebar {
+      position: fixed;
+      top: 0; left: 0;
+      width: 60px;
+      height: 100vh;
+      background-color: #1e293b;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0;
+    }
+    .sidebar i {
+      font-size: 24px;
+      margin: 20px 0;
+      color: #38bdf8;
+      cursor: pointer;
+    }
+    .main-content {
+      margin-left: 60px;
+      flex: 1;
+    }
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background-color: #1e293b;
+    }
+    .logo { font-size: 24px; font-weight: bold; color: #38bdf8; }
+    .search-bar { flex: 1; margin: 10px 20px; }
+    .search-bar input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+    }
+    .auth-buttons { margin-top: 10px; }
+    .auth-buttons button {
+      margin-left: 10px;
+      padding: 10px 20px;
+      background-color: #38bdf8;
+      border: none;
+      border-radius: 8px;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .genre-section { padding: 30px; }
+    .genre-title {
+     font-size: 24px;
+     margin-bottom: 20px;
+     border-left: 4px solid #38bdf8;
+     padding-left: 10px;
+     font-weight: bold;
+     color: #38bdf8; /* Add color if desired */
+     }
+
+    .movie-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 20px;
+    }
+    .movie-card {
+      background-color: #1e293b;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+    .movie-card:hover { transform: scale(1.05); }
+    .movie-card img {
+      width: 100%;
+      height: 270px;
+      object-fit: cover;
+    }
+    .movie-info { padding: 10px; }
+    .movie-info h4 { margin: 0; font-size: 16px; }
+    .movie-info a {
+      display: inline-block;
+      margin-top: 5px;
+      color: #38bdf8;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    @media (max-width: 600px) {
+      header, .search-bar, .auth-buttons { flex-direction: column; width: 100%; }
+      .main-content { margin-left: 0; }
+      .sidebar { display: none; }
+    }
+     
+        .back-arrow {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  background-color: #1e3d59;
+  color: #ffffff;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: background-color 0.3s ease;
+}
+
+.back-arrow i {
+  margin-right: 6px;
+}
+
+.back-arrow:hover {
+  background-color: #ff6e40;
+}
+span{
+  color: red;
+}
+  </style>
+</head>
+<body>
+  <div class="main-content">
+    <header>
+      <a href="file:///C:/Users/praty/OneDrive/Desktop/STUDY/html/uidweb/home%20page/home%20page%202.html" class="back-arrow" style="align-items: end;">
+        <i class="fas fa-arrow-left"></i> Home
+      </a>      
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="logo">FanZone<span>Movie Explorer</span></div>
+      <div class="search-bar">
+        <input id="searchInput" type="text" placeholder="Search Movies or Platforms...">
+      </div>
+    </header>
+    <main id="main"></main>
+  </div>
+
+  <script>
+    const genres = {
+       Action: [
+        ["Mad Max: Fury Road", "https://www.amazon.com", "https://m.media-amazon.com/images/S/pv-target-images/9d6eee26c3f82a7bce27c551e27d2bf38486c8b475b82e72efb15b78038c49a5.jpg"],
+        ["John Wick", "https://www.lionsgate.com", "https://m.media-amazon.com/images/I/81OhX9tbrsL._AC_UF1000,1000_QL80_.jpg"],
+        ["Gladiator", "https://www.netflix.com", "https://m.media-amazon.com/images/I/81v8WQ-eF-L._AC_UF1000,1000_QL80_DpWeblab_.jpg"],
+        ["The Dark Knight", "https://www.hbomax.com", "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_.jpg"],
+        ["Inception", "https://www.netflix.com", "https://m.media-amazon.com/images/I/91G0gTLz6GL._AC_UF1000,1000_QL80_.jpg"],
+        ["Extraction", "https://www.netflix.com", "https://m.media-amazon.com/images/M/MV5BNDBhMmI3OWYtZTA2Ny00Y2RjLTliMWQtYWY5MGIwN2RlZGFjXkEyXkFqcGc@._V1_.jpg"],
+        ["Tenet", "https://www.amazon.com", "https://m.media-amazon.com/images/M/MV5BMTU0ZjZlYTUtYzIwMC00ZmQzLWEwZTAtZWFhMWIwYjMxY2I3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"],
+        ["Top Gun: Maverick", "https://www.paramountplus.com", "https://m.media-amazon.com/images/S/pv-target-images/b53cae7c5cd4934229058def523a3610738d4fcd0f0420db728d0e9044d6395b.jpg"],
+        ["No Time to Die", "https://www.primevideo.com", "https://m.media-amazon.com/images/S/pv-target-images/cc629d967c4387de038799ce3df2e337ab159628c844035f59527de7634805ec.jpg"],
+        ["The Matrix", "https://www.hbomax.com", "https://m.media-amazon.com/images/M/MV5BN2NmN2VhMTQtMDNiOS00NDlhLTliMjgtODE2ZTY0ODQyNDRhXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"]
+      ],
+      Comedy: [
+        ["Superbad", "https://www.netflix.com", "https://m.media-amazon.com/images/I/81iCuqKKORL._AC_UF1000,1000_QL80_.jpg"],
+        ["The Hangover", "https://www.amazon.com", "https://m.media-amazon.com/images/I/91Z8lOMpS+L._AC_UF1000,1000_QL80_.jpg"],
+        ["Step Brothers", "https://www.netflix.com", "https://images.justwatch.com/poster/174261507/s718/step-brothers.jpg"],
+        ["Anchorman", "https://www.hulu.com", "https://m.media-amazon.com/images/I/91TXzLjVV-L.jpg"],
+        ["Bridesmaids", "https://www.peacocktv.com", "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p8414185_p_v8_ae.jpg", "https://www.netflix.com","https://images.justwatch.com/poster/129665685/s718/21-jump-street.jpg"], ["21 Jump Street", "https://www.netflix.com","https://upload.wikimedia.org/wikipedia/en/9/93/21JumpStreetfilm.jpg"], 
+["Deadpool", "https://www.disneyplus.com","https://upload.wikimedia.org/wikipedia/en/2/23/Deadpool_%282016_poster%29.png"], 
+["Game Night", "https://www.hbomax.com","https://m.media-amazon.com/images/M/MV5BMjI3ODkzNDk5MF5BMl5BanBnXkFtZTgwNTEyNjY2NDM@._V1_.jpg"], 
+["We're the Millers", "https://www.netflix.com","https://play-lh.googleusercontent.com/d82vSsVUzl-KkWNrAYrOZY-cP-ELhCkPKmPUY5sGexz-lC0bOmArBGwURzmXgdCD_Q"],
+ ["The Intern", "https://www.amazon.com","https://m.media-amazon.com/images/M/MV5BMTUyNjE5NjI5OF5BMl5BanBnXkFtZTgwNzYzMzU3NjE@._V1_.jpg"]
+      ],
+      Drama: [
+        ["The Shawshank Redemption", "https://www.netflix.com", "https://m.media-amazon.com/images/I/815qtzaP9iL._AC_UF1000,1000_QL80_.jpg"],
+        ["Forrest Gump", "https://www.primevideo.com", "https://m.media-amazon.com/images/M/MV5BNDYwNzVjMTItZmU5YS00YjQ5LTljYjgtMjY2NDVmYWMyNWFmXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"],["The Pursuit of Happiness", "https://www.netflix.com","https://m.media-amazon.com/images/I/61qYYJ427AL._AC_UF1000,1000_QL80_.jpg"],
+ ["A Beautiful Mind", "https://www.hulu.com","https://upload.wikimedia.org/wikipedia/en/b/b8/A_Beautiful_Mind_Poster.jpg"], 
+["The Green Mile", "https://www.hbomax.com","https://upload.wikimedia.org/wikipedia/en/e/e2/The_Green_Mile_%28movie_poster%29.jpg"], 
+["12 Years a Slave", "https://www.disneyplus.com","https://upload.wikimedia.org/wikipedia/en/5/5c/12_Years_a_Slave_film_poster.jpg"], 
+["The Godfather", "https://www.amazon.com","https://m.media-amazon.com/images/M/MV5BNGEwYjgwOGQtYjg5ZS00Njc1LTk2ZGEtM2QwZWQ2NjdhZTE5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"], 
+["Joker", "https://www.hbomax.com","https://upload.wikimedia.org/wikipedia/en/e/e1/Joker_%282019_film%29_poster.jpg"], 
+["Parasite", "https://www.hulu.com","https://m.media-amazon.com/images/M/MV5BYjk1Y2U4MjQtY2ZiNS00OWQyLWI3MmYtZWUwNmRjYWRiNWNhXkEyXkFqcGc@._V1_.jpg"], 
+["The Social Network", "https://www.netflix.com","https://m.media-amazon.com/images/M/MV5BMjlkNTE5ZTUtNGEwNy00MGVhLThmZjMtZjU1NDE5Zjk1NDZkXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"]
+      ],
+      Horror: [
+        ["The Conjuring", "https://www.netflix.com", "https://m.media-amazon.com/images/M/MV5BMTM3NjA1NDMyMV5BMl5BanBnXkFtZTcwMDQzNDMzOQ@@._V1_.jpg"],
+        ["Hereditary", "https://www.primevideo.com", "https://images.justwatch.com/poster/66952648/s718/hereditary.jpg"],["Get Out", "https://www.peacocktv.com","https://upload.wikimedia.org/wikipedia/en/a/a3/Get_Out_poster.png"], 
+["It", "https://www.hbomax.com","https://upload.wikimedia.org/wikipedia/en/5/5a/It_%282017%29_poster.jpg"], 
+["A Quiet Place", "https://www.primevideo.com","https://m.media-amazon.com/images/M/MV5BMjI0MDMzNTQ0M15BMl5BanBnXkFtZTgwMTM5NzM3NDM@._V1_FMjpg_UX1000_.jpg"],
+ ["Insidious", "https://www.netflix.com","https://upload.wikimedia.org/wikipedia/en/2/2d/Insidious_poster.jpg"], 
+["The Ring", "https://www.hulu.com","https://m.media-amazon.com/images/M/MV5BYjUzYzhjNjQtOWEyMS00NjlkLWFiNDEtNGZiM2Y5Y2I2MzhiXkEyXkFqcGc@._V1_.jpg"], 
+["The Nun", "https://www.hbomax.com","https://static.wikia.nocookie.net/listofdeaths/images/6/63/The_Nun_II.jpg/revision/latest?cb=20240206235020"], 
+["Smile", "https://www.paramountplus.com","https://upload.wikimedia.org/wikipedia/en/thumb/7/7f/Smile_%282022_film%29.jpg/250px-Smile_%282022_film%29.jpg"],
+ ["Barbarian", "https://www.hulu.com","https://upload.wikimedia.org/wikipedia/en/e/eb/Barbarian_2022_film_poster.png"]
+      ],
+      Thriller: [
+        ["Gone Girl", "https://www.netflix.com", "https://res.cloudinary.com/jerrick/image/upload/v1688370068/64a27b94c6b895001d28730f.jpg"],
+        ["Shutter Island", "https://www.hbomax.com", "https://m.media-amazon.com/images/M/MV5BN2FjNWExYzEtY2YzOC00YjNlLTllMTQtNmIwM2Q1YzBhOWM1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"],["Se7en", "https://www.primevideo.com","https://m.media-amazon.com/images/M/MV5BY2IzNzMxZjctZjUxZi00YzAxLTk3ZjMtODFjODdhMDU5NDM1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg","https://upload.wikimedia.org/wikipedia/en/6/63/Prisoners2013Poster.jpg"], 
+["Prisoners", "https://www.hulu.com","https://upload.wikimedia.org/wikipedia/en/6/63/Prisoners2013Poster.jpg"], 
+["Zodiac", "https://www.netflix.com","https://m.media-amazon.com/images/M/MV5BNDFkMTRkZmQtM2I0NC00NjJjLWJlMDctNTNiZWYxYzhjZDZiXkEyXkFqcGc@._V1_.jpg"],
+ ["Split", "https://www.peacocktv.com","https://m.media-amazon.com/images/M/MV5BNTZjNmVjMzAtZjg2Mi00MWNmLTk5NTItOTExZDYwNTE2YmExXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"], 
+["Oldboy", "https://www.primevideo.com","https://m.media-amazon.com/images/M/MV5BMTI3NTQyMzU5M15BMl5BanBnXkFtZTcwMTM2MjgyMQ@@._V1_FMjpg_UX1000_.jpg"],
+ ["The Girl with the Dragon Tattoo", "https://www.netflix.com","https://m.media-amazon.com/images/M/MV5BMTczNDk4NTQ0OV5BMl5BanBnXkFtZTcwNDAxMDgxNw@@._V1_.jpg"],
+ ["Nightcrawler", "https://www.hbomax.com","https://upload.wikimedia.org/wikipedia/en/d/d4/Nightcrawlerfilm.jpg"], 
+["Enemy", "https://www.primevideo.com","https://play-lh.googleusercontent.com/aGyl-otlBKP-fpw7euW4vvwOUc4jIB33kIGzmpaptBHpmJNKMb5UsjcDNzYZgJn50n0A"]
+      ]
+    };
+
+    function renderGenres(search = "") {
+  const main = document.getElementById("main");
+  main.innerHTML = "";
+  
+  // Iterate over genres
+  for (const [genre, movies] of Object.entries(genres)) {
+    const filtered = movies.filter(([title, link, image]) =>
+      title.toLowerCase().includes(search.toLowerCase()) || link.toLowerCase().includes(search.toLowerCase())
+    );
+
+    // Skip empty results after filtering
+    if (filtered.length === 0) continue;
+
+    // Create genre section and heading
+    const section = document.createElement("div");
+    section.className = "genre-section";
+
+    // Add "Top 10 Movies in Genre" heading
+    section.innerHTML = `
+      <div class="genre-title">Top 10 Movies in ${genre}</div>
+      <div class="movie-grid"></div>
+    `;
+
+    // Get the grid where movie cards will be added
+    const grid = section.querySelector(".movie-grid");
+
+    // Loop through filtered movies and create movie cards
+    for (const [title, link, image] of filtered) {
+      const card = document.createElement("div");
+      card.className = "movie-card";
+      card.innerHTML = `
+        <img src="${image}" alt="${title}">
+        <div class="movie-info">
+          <h4>${title}</h4>
+          <a href="${link}" target="_blank">Watch Now</a>
+        </div>
+      `;
+      grid.appendChild(card);
+    }
+
+    // Append the section with movie cards to the main content
+    main.appendChild(section);
+  }
+}
+
+
+    renderGenres();
+
+    document.getElementById("searchInput").addEventListener("input", e => {
+      renderGenres(e.target.value);
+    });
+  </script>
+  <footer>
+    Copyright © 2025 FanZone. All rights reserved.
+                <p>&copy; 2025 FanZone. All rights reserved.</p>
+                 <p>FanZone @&copy; 2025 | Created by Danta Pratyushan Sai</p>
+        <p>This is a project website and all news articles are fictional</p>
+    <marquee>Latest fan updates and highlights - Updated daily!</marquee>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FanZone News</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        
+        header {
+            background-color: #2887db;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        .date {
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+        
+        nav {
+            background-color: #3ab9d9;
+            padding: 0.5rem;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        nav li {
+            margin: 0 1rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        nav a:hover {
+            text-decoration: underline;
+        }
+        
+        .container {
+            background-color: #0055aa;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        .section {
+            background-color:#a5cbf1;
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section h2 {
+            border-bottom: 2px solid #333;
+            padding-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .news-item {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dotted #ccc;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .news-item:last-child {
+            border-bottom: none;
+        }
+        
+        .news-item h3 {
+            margin-top: 0;
+            color: #444;
+        }
+        
+        .news-image {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        
+        .read-more {
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            align-self: flex-start;
+        }
+        
+        .read-more:hover {
+            text-decoration: underline;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .poll {
+            background-color: #eef;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 5px;
+        }
+        
+        .poll h3 {
+            margin-top: 0;
+        }
+        
+        .poll-option {
+            margin: 0.5rem 0;
+        }
+        
+        .poll-option label {
+            margin-left: 0.5rem;
+        }
+        
+        button {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-top: 0.5rem;
+        }
+        
+        button:hover {
+            background-color: #0055aa;
+        }
+        
+        #poll-result {
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+        
+        .subscribe {
+            background-color: #fee;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .subscribe input {
+            padding: 0.5rem;
+            width: 60%;
+            margin-right: 0.5rem;
+        }
+        
+        .logo {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .back-arrow {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  background-color: #1e3d59;
+  color: #ffffff;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: background-color 0.3s ease;
+}
+
+.back-arrow i {
+  margin-right: 6px;
+}
+
+.back-arrow:hover {
+  background-color: #ff6e40;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <a href="file:///C:/Users/praty/OneDrive/Desktop/STUDY/html/uidweb/home%20page/home%20page%202.html" class="back-arrow" style="align-items: end;">
+            <i class="fas fa-arrow-left"></i> Home
+          </a>      
+        <div class="header-content">
+            <!-- <img src="/api/placeholder/40/40" alt="Newspaper Logo" class="logo"> -->
+            <h1>FanZone</h1>
+        </div>
+        <div class="date">April 8, 2025</div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#movies">Movies</a></li>
+            <li><a href="#music">Music</a></li>
+            <li><a href="#sports">Sports</a></li>
+            <li><a href="#gaming">Gaming</a></li>
+        </ul>
+    </nav>
+    
+    <main class="container">
+        <section id="movies" class="section">
+            <h2>Trending Movies</h2>
+            
+            <div class="news-item">
+                <img src="https://static1.srcdn.com/wordpress/wp-content/uploads/2021/10/Avatar-and-Avatar-2-Box-Office.jpg" alt="Avatar 3 Movie Scene" class="news-image">
+                <h3>Avatar 3 Breaks All Box Office Records</h3>
+                <p>James Cameron's latest installment in the Avatar series has become the highest-grossing movie of all time, surpassing the previous records set by Avatar and Avengers: Endgame.</p>
+                <a href="#" class="read-more">Read more...</a>
+            </div>
+            
+            <div class="news-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYGSpu2dsruICKkYLpj4vHzRFeTsEeOpyxXw&s" alt="Marvel Superheroes" class="news-image">
+                <h3>Marvel Announces New Superhero Lineup</h3>
+                <p>Marvel Studios has unveiled its plans for Phase 6 of the MCU, introducing several new superheroes and storylines that will shape the cinematic universe for years to come.</p>
+                <a href="#" class="read-more">Read more...</a>
+            </div>
+            
+            <div class="news-item">
+                <img src="https://hips.hearstapps.com/hmg-prod/images/christopher-nolan-on-tuesday-july-18-2023-news-photo-1728489162.jpg" alt="Christopher Nolan" class="news-image">
+                <h3>Christopher Nolan's Next Film Will Explore Quantum Physics</h3>
+                <p>After the success of Oppenheimer, director Christopher Nolan has announced his next project will delve into the mind-bending world of quantum physics and parallel universes.</p>
+                <a href="#" class="read-more">Read more...</a>
+            </div>
+            
+            <div class="poll">
+                <h3>Poll: What's your favorite movie genre?</h3>
+                <div class="poll-option">
+                    <input type="radio" id="action" name="genre" value="action">
+                    <label for="action">Action/Adventure</label>
+                </div>
+                <div class="poll-option">
+                    <input type="radio" id="comedy" name="genre" value="comedy">
+                    <label for="comedy">Comedy</label>
+                </div>
+                <div class="poll-option">
+                    <input type="radio" id="drama" name="genre" value="drama">
+                    <label for="drama">Drama</label>
+                </div>
+                <div class="poll-option">
+                    <input type="radio" id="scifi" name="genre" value="scifi">
+                    <label for="scifi">Sci-Fi/Fantasy</label>
+                </div>
+                <button id="vote-btn">Vote</button>
+                <div id="poll-result"></div>
+            </div>
+        </section>
+        
+        <section id="music" class="section">
+            <h2>Music News</h2>
+            
+            <div class="news-item">
+                <img src="https://www.hollywoodreporter.com/wp-content/uploads/2014/10/taylor_swift_good_morning_american_h_2014.jpg?w=1440&h=810&crop=1" alt="Taylor Swift Concert" class="news-image">
+                <h3>Taylor Swift Announces World Tour</h3>
+                <p>Following her record-breaking album sales, Taylor Swift has announced a massive world tour that will span six continents and feature special guest appearances from other top artists.</p>
+                <a href="#" class="read-more">Read more...</a>
+            </div>
+            
+            <div class="news-item">
+                <img src="https://thepost.ph/wp-content/uploads/2025/06/BTS-after-hiatus-banner.jpg" alt="BTS Band Members" class="news-image">
+                <h3>BTS Returns With New Album After Hiatus</h3>
+                <p>K-pop sensation BTS has returned with a new album after their brief hiatus, sending fans into a frenzy with their new sound and experimental tracks.</p>
+                <a href="#" class="read-more">Read more...</a>
+            </div>
+            
+            <div class="news-item">
+                <img src="https://deadline.com/wp-content/uploads/2023/08/ll-cool-j-1.jpg" alt="Hip-Hop Concert" class="news-image">
+                <h3>Hip-Hop Celebrates 50th Anniversary With Mega Concert</h3>
+                <p>The biggest names in hip-hop gathered for an epic concert celebrating the genre's 50th anniversary, featuring performances spanning from old school classics to modern hits.</p>
+                <a href="#" class="read-more">Read more...</a>
+            </div>
+            
+            <div class="subscribe">
+                <h3>Subscribe to our Music Newsletter</h3>
+                <input type="email" id="email" placeholder="Enter your email">
+                <button id="subscribe-btn">Subscribe</button>
+                <p id="subscribe-msg"></p>
+            </div>
+        </section>
+        
+        <section id="sports" class="section">
+            <h2>Sports Updates</h2>
+            
+            <div class="news-item">
+                <img src="https://www.aljazeera.com/wp-content/uploads/2025/06/AFP__20250623__2220897564__v1__HighRes__2025NbaFinalsOklahomaCityThunderVIndianaPace-1750656425.jpg?resize=1920%2C1440" alt="Lakers Championship" class="news-image">
+                <h3>Lakers Win NBA Championship in Thrilling Game 7</h3>
+                <p>The Los Angeles Lakers have claimed their 18th NBA championship after defeating the Boston Celtics in a nail-biting Game 7 that came down to the final seconds.</p>
+                <a href="#" class="read-more">Read more...</a>
+            </div>
+            
+            <div class="news-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0wG4_tzsf7mOp_dK_Tvuuv7kDfks-LSb1uQ&s" alt="Olympic Rings" class="news-image">
+                <h3>Olympic Committee Adds Three New Sports for 2028</h3>
+                <p>The International Olympic Committee has announced the addition of cricket, flag football, and squash to the program for the 2028 Los Angeles Olympics.</p>
+                <a href="#" class="read-more">Read more...</a>
+            </div>
+            
+            <div class="news-item">
+                <img src="https://infopetitenation.ca/wp-content/uploads/2025/06/world-cup-qualifiers-26-1024x724.png" alt="Soccer Match" class="news-image">
+                <h3>World Cup Qualifying Matches Begin Across Globe</h3>
+                <p>National teams worldwide have begun their qualifying campaigns for the 2026 FIFA World Cup, with some surprising upsets already making headlines.</p>
+                <a href="#" class="read-more">Read more...</a>
+            </div>
+        </section>
+        
+        <section id="gaming" class="section">
+            <h2>Gaming Zone</h2>
+            
+            <div class="news-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRQ129PdpwJlzNzCZ0wCYdF-2br-drkbDBiQ&s" alt="GTA 6 Logo" class="news-image">
+                <h3>GTA 6 Release Date Finally Confirmed</h3>
+                <p>Rockstar Games has officially announced the release date for the highly anticipated Grand Theft Auto 6, ending years of speculation and rumors.</p>
+                <a href="#" class="read-more">Read more...</a>
+            </div>
+            
+            <div class="news-item">
+                <img src="https://images.indianexpress.com/2025/01/Nintendo-Switch-2-console.png" alt="Nintendo Console" class="news-image">
+                <h3>Nintendo Unveils Next-Generation Console</h3>
+                <p>Nintendo has revealed its next-generation gaming console, promising revolutionary gameplay experiences and backward compatibility with Switch titles.</p>
+                <a href="#" class="read-more">Read more...</a>
+            </div>
+            
+            <div class="news-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0DjFwEMvn9JhIcUybRNXm53YhGxV6_QQehQ&s" alt="Esports Tournament" class="news-image">
+                <h3>Esports Tournament Sets Viewership Record</h3>
+                <p>The World Championship finals for League of Legends broke all previous esports viewership records, with over 5 million concurrent viewers tuning in to watch the action.</p>
+                <a href="#" class="read-more">Read more...</a>
+            </div>
+            
+            <div class="poll">
+                <h3>Poll: What gaming platform do you prefer?</h3>
+                <div class="poll-option">
+                    <input type="radio" id="pc" name="platform" value="pc">
+                    <label for="pc">PC</label>
+                </div>
+                <div class="poll-option">
+                    <input type="radio" id="playstation" name="platform" value="playstation">
+                    <label for="playstation">PlayStation</label>
+                </div>
+                <div class="poll-option">
+                    <input type="radio" id="xbox" name="platform" value="xbox">
+                    <label for="xbox">Xbox</label>
+                </div>
+                <div class="poll-option">
+                    <input type="radio" id="nintendo" name="platform" value="nintendo">
+                    <label for="nintendo">Nintendo</label>
+                </div>
+                <div class="poll-option">
+                    <input type="radio" id="mobile" name="platform" value="mobile">
+                    <label for="mobile">Mobile</label>
+                </div>
+                <button id="gaming-vote-btn">Vote</button>
+                <div id="gaming-poll-result"></div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>FanZone @&copy; 2025 | Created by Danta Pratyushan Sai</p>
+        <p>This is a project website and all news articles are fictional</p>
+    </footer>
+
+    <script>
+        // Current date
+        const today = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.querySelector('.date').textContent = today.toLocaleDateString('en-US', options);
+        
+        // Movie poll functionality
+        document.getElementById('vote-btn').addEventListener('click', function() {
+            const selectedGenre = document.querySelector('input[name="genre"]:checked');
+            const resultDiv = document.getElementById('poll-result');
+            
+            if (!selectedGenre) {
+                resultDiv.textContent = "Please select a genre before voting!";
+                resultDiv.style.color = "red";
+                return;
+            }
+            
+            const genreName = document.querySelector(`label[for="${selectedGenre.id}"]`).textContent;
+            resultDiv.textContent = `Thanks for voting! ${genreName} is currently leading with 37% of votes.`;
+            resultDiv.style.color = "green";
+            
+            // Disable voting after submission
+            document.querySelectorAll('input[name="genre"]').forEach(input => {
+                input.disabled = true;
+            });
+            document.getElementById('vote-btn').disabled = true;
+        });
+        
+        // Gaming poll functionality
+        document.getElementById('gaming-vote-btn').addEventListener('click', function() {
+            const selectedPlatform = document.querySelector('input[name="platform"]:checked');
+            const resultDiv = document.getElementById('gaming-poll-result');
+            
+            if (!selectedPlatform) {
+                resultDiv.textContent = "Please select a platform before voting!";
+                resultDiv.style.color = "red";
+                return;
+            }
+            
+            const platformName = document.querySelector(`label[for="${selectedPlatform.id}"]`).textContent;
+            resultDiv.textContent = `Thanks for voting! ${platformName} is currently leading with 42% of votes.`;
+            resultDiv.style.color = "green";
+            
+            // Disable voting after submission
+            document.querySelectorAll('input[name="platform"]').forEach(input => {
+                input.disabled = true;
+            });
+            document.getElementById('gaming-vote-btn').disabled = true;
+        });
+        
+        // Newsletter subscription
+        document.getElementById('subscribe-btn').addEventListener('click', function() {
+            const email = document.getElementById('email').value;
+            const msgElement = document.getElementById('subscribe-msg');
+            
+            if (!email || !email.includes('@')) {
+                msgElement.textContent = "Please enter a valid email address!";
+                msgElement.style.color = "red";
+                return;
+            }
+            
+            msgElement.textContent = "Thanks for subscribing to our music newsletter!";
+            msgElement.style.color = "green";
+            document.getElementById('email').value = '';
+        });
+        
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Image hover effect
+        document.querySelectorAll('.news-image').forEach(img => {
+            img.addEventListener('mouseover', function() {
+                this.style.opacity = '0.8';
+                this.style.transition = 'opacity 0.3s ease';
+            });
+            
+            img.addEventListener('mouseout', function() {
+                this.style.opacity = '1';
+                this.style.transition = 'opacity 0.3s ease';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  body{
+    margin: 0%;
+    padding: 0%;
+    font-family: sans-serif;
+    justify-self: center;
+    padding-top: 8%;
+    background-image: url('https://images.unsplash.com/photo-1625685553971-222fb25d504a?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Ymx1ZSUyMCUyMGJhY2tncm91bmR8ZW58MHx8MHx8fDA%3D');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+  header{
+    width: 10%;
+    height: 40px;
+    color: rgb(57, 226, 232);
+    
+  }
+  
+  .back-arrow {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    background-color: #1e3d59;
+    color: #ffffff;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: background-color 0.3s ease;
+  }
+  
+  .back-arrow i {
+    margin-right: 6px;
+  }
+  
+  .back-arrow:hover {
+    background-color: #ff6e40;
+  }
+  
+  .iconbar
+  {
+    align-self: center;
+    padding-left: 160px;
+  }
+  .wrapper{
+    width: 520px;
+    align-self: center;
+    background-color:rgba(49, 225, 238, 0.773);
+    box-shadow: 0 0 10px rgba(0,0,0,-2);
+    color: antiquewhite;
+    border-radius: 35px;
+    padding: 30px 40px;
+  }
+  .wrapper h1{
+    font-size: 45px;
+    color: orange;
+    text-align: center;
+  }
+  .wrapper .input-box
+  {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    background-color:wheat;
+    margin: 30px 0;
+  }
+  .input-box input{
+    width: 100%;
+    height: 50px;
+    font-size: medium;
+    color: orange;
+    padding: 20px 20px 20px 20px;
+  }
+  .input-box input::placeholder{
+    color:orange;
+  }
+  .input-box i{
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px;
+  
+  }
+  .wrapper .remember-forgot{
+    color:cornflowerblue;
+    text-decoration: underline;
+    text-align: right;
+  }
+  .remember-forgot a:hover{
+    text-decoration: underline;
+  }
+  .wrapper .register-account{
+    color:ghostwhite;
+    text-decoration: underline;
+    text-align: right;
+  }
+  .register-account a:hover{
+    text-decoration: underline;
+  }
+  .wrapper .btn{
+    width: 25%;
+    height: 45px;
+    background-color:orange;
+    border: none;
+    outline: none;
+    box-shadow: 0 0 10px rgba(0,0,0,-1);
+    cursor: pointer;
+    font-size: 16px;
+    color:snow;
+    font-weight: 600;
+  }
+  .input-box i{
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    color: black;
+    transform: translateY(-50%);
+    font-size: 30px;
+  
+  }

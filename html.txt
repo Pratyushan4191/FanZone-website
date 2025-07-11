@@ -1,0 +1,433 @@
+<html>
+  <head>
+    <title>Farhan's Portfoliio</title>
+  </head>
+  
+  <body>
+    <!--What are container tags in HTML-->
+    <header> <!-- header tag is only a container-->
+      <h1>Farhan</h1>
+      <p><span class='edu'>Educator</span> and <span class='soft'>Software Engineer</span></p>
+    </header>
+    
+    <!--Create a new option in the nav bar, ADMIN LOGIN-->
+    <!--When you click on the admin login button, a new section should come at the bottom-->
+    <!--That new section will have a username and password textbox [section will be hidden by default]-->
+    <!--Only if you enter the correct username and password, you will be able to see the messages sumbitted by other people, this section will replace the admin login section-->
+    
+    <nav>
+      <ul>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#">Achievements</a></li>
+        <li><a href="#">Skills</a></li>
+        <li><a href="#">Hobbies</a></li>
+        <li><a href="#contact-me">Contact</a></li>
+        <li><a href="#admin-login" onClick="showAdminSection()">Admin Login</a></li>
+      </ul>
+    </nav>
+    
+    <button id='toggle-btn'> Toggle Theme </button>
+    
+    <main>
+      <section id='education' class="section-group"> <!-- section is a container tag-->
+      <h2>Education</h2>
+      <div class="">
+        <h3> Masters In Applied AI </h3>
+        <p> University of San Diego</p>
+      </div>
+      
+      <div class="">
+        <h3> Bachelors of Technology, CSE. </h3>
+        <p> VTU, Bangalore</p>
+      </div>
+      
+      <div class="">
+        <h3> High School </h3>
+        <p> DPS Srinagar.</p>
+      </div>
+      </section>
+      
+      <section id='projects' class="section-group">
+      <h2>Projects</h2>
+      <div class="">
+        <h3> Project 1 </h3>
+        <p> One Line about project</p>
+      </div>
+      
+      <div class="">
+        <h3>  Project 2</h3>
+        <p> One Line about project</p>
+      </div>
+      
+      <div class="">
+        <h3> Project 3 </h3>
+        <p> One Line about project</p>
+      </div>
+      </section>
+      
+      <section id='experience' class="section-group">
+      <h2>Experience</h2>
+      <div class="">
+        <h3> Software Engineer at Amazon </h3>
+        <p> 2020-Present</p>
+      </div>
+      
+      <div class="">
+        <h3>  Technical Trainer at Learning Zone</h3>
+        <p> Trained students on verious Tech Topics</p>
+        <p> 2023-Present</p>
+      </div>
+      
+      <div class="">
+        <h3> Exp 3 </h3>
+        <p> One Line about Expr 3</p>
+        <ul>
+          <li>point 1 </li>
+          <li> point 2</li>
+        </ul>
+      </div>
+      </section>
+      
+      <!-- Contact me section starts here-->
+      
+      <section id="contact-me" class="section-group">
+        <h2> Contact me </h2>
+        <form id = "contact-me-form">
+          <div class="form-row">
+          <label>Name </label>
+          <input type="text" id="your-name" placeholder='Enter name..'></input>
+          </div>
+          <div class="form-row">
+          <label>Email </label>
+          <input type="email" id="your-email" placeholder='Enter email..'></input>
+          </div>
+          <div class="form-row">
+          <label>Your message </label>
+            <textarea id="your-msg" placeholder='Write your message here..'></textarea>
+          </div>
+          <br>
+            <div class='sendbtn'>
+            <button id="" > Send </button>
+          </div>
+        </form>
+          </section>
+      <!--Contact me section ends here-->
+      
+      <section id="admin-login" class="section-group">
+        <h2> Admin Login </h2>
+        <form id = "admin-form">
+          <label>Username </label>
+          <input type="text" id="username">
+          
+          <label>Password </label>
+          <input type="password" id="password">
+          <p>
+          <button type="submit" id=""> Submit </button>
+        </form>
+          </section>
+      <!--Admin login section ends here-->
+      
+      <section id="user-messages" class="section-group">
+        <h2> User Messages </h2>
+        <div id="saari-messages">
+          <!--
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div>$ tags being sent from JS..........</div>
+          -->
+        </div>
+          </section>
+      
+      
+    </main>
+  </body>
+</html>
+header {
+  text-align: center;
+  background-color: #1279f1;
+  padding: 50px 0 0 0; /* 4 values, top, right, bottom and left (Clockwise) */
+  border: 10px;
+  border-color: #1b12dc;
+  border-style: solid;
+  border-radius: 10px;
+  margin: auto;
+}
+
+.soft{
+  color: blue;
+}
+
+.edu{
+  color: red;
+}
+
+nav {
+  background-color: #2c3e50;
+  padding: 2px;
+}
+
+
+nav ul{
+  list-style-type: none;
+  display: flex;
+  justify-content:space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+nav ul li a{
+  color: #fff;
+  text-decoration: none;
+  margin: 0 15px;
+  list-style-type: none;
+  font-weight: bold;
+  
+}
+
+nav ul li a:hover{
+  color: #28d1f7;
+  border: 2px;
+  border-style: solid;
+  border-color: #28f7e7;
+  border-radius: 6px;
+  padding: 2px;
+  
+}
+
+.section-group {
+  backgroud-color: #fff;
+  padding: 3rem 2rem;
+  box-shadow:0 0 30px rgba(0,0,0,0.2);
+  border-radius: 8px;
+}
+
+.section-group h2 {
+  color: #3498db;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-group h2:hover{
+  color: #28d1f7;
+  border: 2px;
+  border-style: solid;
+  border-color: #28f7e7;
+  border-radius: 6px;
+  padding: 2px;
+}
+
+.section-group input, .section-group textarea {
+  border-radius: 4px;
+  border: 2px solid #3498db;
+  padding: 0.5rem;
+  margin-bottom: 1 rem;
+}
+
+.section-group button{
+  background-color: #3498db;
+  color: ;
+  border-radius: 4px;
+  width: 200px;
+  transition: background-color 1.5s ease;
+}
+
+.section-group button:hover {
+  background-color: green
+}
+
+#admin-login {
+  display : none;
+}
+
+#user-messages {
+  display: none;
+}
+
+.sendbtn{
+  display: flex;
+  justify-content: left;
+  margin-left: 45px;
+}
+
+
+
+#your-name, #your-email {
+  margin-left: 50px;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  margin: 10px 0; 
+}
+
+#toggle-btn {
+  position: fixed;
+  top:20px;
+  right: 20px;
+  background-color: black;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 1.5s ease;
+}
+
+#toggle-btn:hover{
+  background-color:#3498db;
+}
+
+.dark-mode{
+  background-color: #34495c;
+  /*color:#3e3b40;*/
+  color:white;
+}
+
+.dark-mode header{
+  background-color: #34455e;
+  color: white;
+}
+
+.dark-mode nav{
+  background-color: #555;
+}
+//1. Make AdminLogin Btn work
+
+const ControlOfAdminSection = document.getElementById("admin-login");
+const controlOfUserMessagesSection = document.getElementById("user-messages");
+
+//Global scope.
+function showAdminSection() {
+  
+  //block scope
+  ControlOfAdminSection.style.display = "block";
+}
+
+//2.Make you Admin logic active
+//Important CONCEPT - WHAT IS SCOPE of variables?
+// Accessibility of variables 
+
+
+document.getElementById("admin-form").addEventListener('submit', function(event){
+  event.preventDefault();
+  
+  const username = document.getElementById("username").value;
+const password = document.getElementById("password").value;
+  
+//console.log(username);
+//console.log(password);
+  
+  const storedUsername = "admin";
+  const storedPassword = "password";
+  
+  if (username == storedUsername  &&  password == storedPassword){
+  /* int or string == TRUE [1 = "1"]
+  Double equal sign is only concerned with the value,
+  but triple equal sign will care about the data type as well.
+  int or string === FALSE [1.0 = "1"]
+    //LOGIC GATES?
+   */
+    //alert, confirm and prompt - 
+    //only display a message and dont need response - alert
+    //When you want ok or confirm from the user - confirm
+    //when you want input from the user - prompt.
+    
+    alert("Welcome, login was successful!");
+    ControlOfAdminSection.style.display = "none";
+    
+    controlOfUserMessagesSection.style.display = "block";
+    
+    //call the function to display user messages
+    displayStoredMessages();
+    
+  }
+  else{
+    alert("Oops, login was Un-successful! Please try again");
+  }
+});
+
+//3. Make your Contact me Section store user responses.
+//creating an event listener for the contact me form
+document.getElementById("contact-me-form").addEventListener('submit', function(event){
+  event.preventDefault();
+  const name = document.getElementById("your-name").value;
+const email = document.getElementById("your-email").value;
+  const message = document.getElementById("your-msg").value;
+  
+  const response = { name, email, message, date: new Date().toISOString()};
+  //console.log(new Date())
+  
+  //Store these values in the local Database - LocalStorage
+  
+  //JSON?
+  // It is a format that is widely and extensively used in APIs/ For backend and frontend communication
+  
+  //You need to prepare a format that you will send from the frontend to the backend
+  //Why?
+  //So that you have consistency in the data for all the responses.
+  // Date() will give you a datetime DATATYPE, to convert that into a string we use toISOString()
+  
+  console.log(response)
+  //Create a reference to your DUMMY DATABASE
+  //What will your DummyDatbase actually be?
+  //It will be a LIST stored on CHROME's LocalStorage. [Cache]
+
+  //When you run the program for the first time, Dummydatabase will be created as an empty LIST, from next time onwards, it won't be created, it will just be accessed and the control will be stored in the javascript variable "DummyDatabase". 
+  //There are 2 things that we are dealing with, JS Variable, localstorage Var.
+  //We are creating a JAVASCRIPT Variable, DummyDatabase.
+  const DummyDatabase = JSON.parse(localStorage.getItem('DummyDatabase')) || [ ] ; //AND -> &&  OR -> ||
+  //JSON.parse converts JSON structure to JAVASCRIPT Object
+  //JSON.stringify convert JAVASCRIPT Object to JSON
+  //We are trying to create a Dummy Database with same name "DummyDatabase"
+  //Where will it exist? On chrome localStorage as a LIST
+  //When will it be created? by line 82, on the first execution it will be created as an EMPTY LIST.
+  //After the first run, it will never be recreated, why? Because in the first run it got created and
+  //now you have a "DummyDatabase" in the chrome localStorage
+  //after the first run, instead of creating it will simply get the control of that list and store it in the
+  //variable "DummyDatabase"
+  console.log(DummyDatabase);
+  
+  //What is the next step? 
+  //Storing the user response -> DummyDatabase
+  DummyDatabase.push(response); // This DummyDatabase is the JAVASCRIPT Variable of the DB.
+  console.log(DummyDatabase);
+  //When you try to set something with setItem, if not present, it will get created.
+  //Line 102 is the place where from JS data goes to localStorage(our temp DB)
+  localStorage.setItem('DummyDatabase', JSON.stringify(DummyDatabase));
+  
+  alert("Thankyou for your message, I'll get in touch with you ASAP");
+  this.reset();
+});
+
+const ToggleThemeBtn = document.getElementById("toggle-btn");
+ToggleThemeBtn.addEventListener('click', function(){
+  document.body.classList.toggle("dark-mode");
+});
+
+//When you write the correct creds, all the user messages should show up.
+function displayStoredMessages(){
+  //get all responses from dummydatabase and shoe them
+  
+  const responseContainer = document.getElementById("saari-messages");
+  const DummyDatabase = JSON.parse(localStorage.getItem('DummyDatabase')) || [ ];
+  
+  //to get the messages from DB, we will have to loop through the list(DB) and put in the div.
+  DummyDatabase.forEach(response=>{
+    const responseElement = document.createElement('div');
+    
+    responseElement.innerHTML = `
+    <p> Name: ${response.name}</p>
+    <p> Email: ${response.email}</p>
+    <p> Message: ${response.message}</p>
+    <p> Date: ${response.date}</p>
+    <hr>
+    `
+    responseContainer.append(responseElement);
+  })
+  
+}
