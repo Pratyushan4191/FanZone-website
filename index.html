@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to FanZone</title>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #0f172a;
+      --accent-blue: #2563eb;
+      --accent-purple: #7c3aed;
+      --text-white: #f8fafc;
+      --text-secondary: #94a3b8;
+      --glass-bg: rgba(255, 255, 255, 0.03);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top right, #1e1b4b, var(--bg-color));
+      color: var(--text-white);
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow-x: hidden;
+    }
+    
+    .container {
+      max-width: 1000px;
+      padding: 40px 20px;
+      animation: fadeIn 0.8s ease-out;
+    }
+    
+    .header {
+      margin-bottom: 30px;
+    }
+    
+    .logo {
+      font-size: 40px;
+      font-weight: 800;
+      color: var(--text-white);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+    }
+
+    .logo span {
+      color: var(--accent-blue);
+    }
+    
+    .main-title {
+      font-size: 54px;
+      font-weight: 800;
+      margin-bottom: 15px;
+      background: linear-gradient(135deg, #fff, #94a3b8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .tagline {
+      font-size: 20px;
+      color: var(--text-secondary);
+      margin-bottom: 25px;
+      font-weight: 400;
+    }
+    
+    .description {
+      width: 80%;
+      margin: 0 auto 40px;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #cbd5e1;
+    }
+    
+    .button-container {
+      margin-bottom: 60px;
+    }
+    
+    .enter-button {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+      color: white;
+      border: none;
+      padding: 16px 44px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 30px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+      transition: var(--transition);
+    }
+    
+    .enter-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(124, 58, 237, 0.5);
+      background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+    }
+    
+    .enter-button:active { 
+      transform: translateY(-1px);
+    }
+    
+    .categories {
+      margin-top: 20px;
+    }
+    
+    .categories-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 30px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .categories-title::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 3px;
+      background-color: var(--accent-blue);
+      border-radius: 2px;
+    }
+    
+    .category-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      width: 100%;
+    }
+    
+    .category {
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      padding: 30px 20px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--text-white);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      transition: var(--transition);
+    }
+    
+    .category:hover {
+      transform: translateY(-8px);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .category:hover .category-icon {
+      color: var(--accent-purple);
+      transform: scale(1.1);
+    }
+    
+    .category-icon {
+      font-size: 32px;
+      color: var(--accent-blue);
+      transition: var(--transition);
+    }
+    
+    .category-name {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0;
+    }
+    
+    .category-desc {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+    
+    footer {
+      margin-top: 60px;
+      padding: 30px 20px;
+      width: 100%;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 13px;
+      color: var(--text-secondary);
+      box-sizing: border-box;
+    }
+
+    .footer-marquee {
+      background-color: rgba(255, 255, 255, 0.01);
+      padding: 6px 0;
+      margin-top: 15px;
+      border-top: 1px solid rgba(255, 255, 255, 0.02);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+    }
+
+    .footer-marquee marquee {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Media queries */
+    @media (max-width: 768px) {
+      .main-title {
+        font-size: 38px;
+      }
+      .description {
+        width: 100%;
+      }
+      .category-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo"><i class="fas fa-bolt"></i> Fan<span>Zone</span></div>
+    </div>
+    
+    <h1 class="main-title">Where Passion Meets Community</h1>
+    <h2 class="tagline">The Ultimate Fan Dashboard</h2>
+    
+    <p class="description">
+      Join the ultimate fan community platform celebrating all things entertainment and sports. 
+      Discover the latest in music, movies, sports, gaming, events, participate in polls, 
+      and stay updated with fan-centric news. FanZone is your digital home for all fandoms!
+    </p>
+    
+    <div class="button-container">
+      <a href="homepage2.html" class="enter-button">Enter FanZone <i class="fas fa-arrow-right"></i></a>
+    </div>
+    
+    <div class="categories">
+      <h2 class="categories-title">Explore Categories</h2>
+      
+      <div class="category-container">
+        <a href="music.html" class="category">
+          <i class="fas fa-music category-icon"></i>
+          <h3 class="category-name">Music</h3>
+          <p class="category-desc">Follow your favorite artists and discover new releases</p>
+        </a>
+        
+        <a href="movie.html" class="category">
+          <i class="fas fa-film category-icon"></i>
+          <h3 class="category-name">Movies</h3>
+          <p class="category-desc">Get the scoop on blockbusters and indie gems</p>
+        </a>
+        
+        <a href="Sports.html" class="category">
+          <i class="fas fa-running category-icon"></i>
+          <h3 class="category-name">Sports</h3>
+          <p class="category-desc">Cheer for your teams across all major leagues</p>
+        </a>
+        
+        <a href="gaming.html" class="category">
+          <i class="fas fa-gamepad category-icon"></i>
+          <h3 class="category-name">Gaming</h3>
+          <p class="category-desc">Level up with gaming news and community</p>
+        </a>
+        
+        <a href="add_event_list.html" class="category">
+          <i class="fas fa-calendar-alt category-icon"></i>
+          <h3 class="category-name">Events</h3>
+          <p class="category-desc">Never miss a concert, convention or meetup</p>
+        </a>
+        
+        <a href="poll.html" class="category">
+          <i class="fas fa-poll category-icon"></i>
+          <h3 class="category-name">Polls</h3>
+          <p class="category-desc">Vote and share your opinions with fellow fans</p>
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <footer>
+    <p>Copyright &copy; 2025 FanZone. All rights reserved. | Created by Danta Pratyushan Sai</p>
+    <div class="footer-marquee">
+      <marquee>Welcome to FanZone - The best fan community on the web!</marquee>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Poll UI Design</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: radial-gradient(circle at top right, #1e1b4b, #0f172a);
+            position: relative;
+            overflow-x: hidden;
+            padding: 20px;
+            color: #f8fafc;
+        }
+
+        /* Animated Background Elements */
+        .bg-element {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.02);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Main Title */
+        .title-container {
+            position: fixed;
+            top: 50px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            z-index: 100;
+        }
+
+        .title {
+            font-size: 36px;
+            font-weight: 800;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            animation: glow 2s infinite alternate;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: #cbd5e1;
+            margin-bottom: 30px;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 5px rgba(255, 255, 255, 0.3); }
+            to { text-shadow: 0 0 15px rgba(255, 255, 255, 0.6); }
+        }
+
+        /* Poll Grid Container */
+        .polls-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 120px auto 40px;
+            padding: 0 15px;
+        }
+
+        /* Poll Box */
+        .poll-wrapper {
+            background: #1e293b;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .poll-wrapper:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            border-color: #2563eb;
+        }
+
+        .poll-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: #2563eb;
+            transition: width 0.3s ease;
+        }
+
+        .poll-wrapper:hover::before {
+            width: 8px;
+        }
+
+        .poll-wrapper header {
+            font-size: 20px;
+            font-weight: 600;
+            color: #f8fafc;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .poll-icon {
+            margin-right: 10px;
+            color: #2563eb;
+        }
+
+        .poll-category {
+            background: rgba(37, 99, 235, 0.1);
+            color: #2563eb;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .poll-area {
+            margin: 15px 0;
+        }
+
+        .poll-area label {
+            display: block;
+            margin-bottom: 12px;
+            padding: 12px 15px;
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .poll-area label:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .poll-area label.selected {
+            border-color: #2563eb;
+            background: rgba(37, 99, 235, 0.15);
+        }
+
+        .poll-area label .row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 2;
+        }
+
+        .circle {
+            height: 18px;
+            width: 18px;
+            border: 2px solid #cbd5e1;
+            border-radius: 50%;
+            display: inline-block;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        label:hover .circle {
+            border-color: #f8fafc;
+        }
+
+        label.selected .circle {
+            border-color: #2563eb;
+        }
+
+        .circle::after {
+            content: "";
+            position: absolute;
+            height: 10px;
+            width: 10px;
+            background: #cbd5e1;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            display: none;
+            transition: all 0.3s ease;
+        }
+
+        label:hover .circle::after {
+            display: block;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        label.selected .circle::after {
+            display: block;
+            background: #2563eb;
+        }
+
+        .percent {
+            font-weight: 600;
+            color: #2563eb;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 2;
+        }
+
+        .progress {
+            height: 6px;
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 20px;
+            width: 100%;
+            margin-top: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress::after {
+            content: "";
+            position: absolute;
+            height: 100%;
+            width: 0%;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: inherit;
+            transition: all 0.8s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+        }
+
+        label.selected .progress::after {
+            background: #2563eb;
+        }
+
+        .selectall .percent {
+            opacity: 1;
+        }
+
+        .selectall .progress::after {
+            width: calc(1% * var(--w));
+        }
+
+        /* Poll Footer */
+        .poll-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 13px;
+            color: #94a3b8;
+        }
+
+        .votes-count {
+            display: flex;
+            align-items: center;
+        }
+
+        .votes-count i {
+            margin-right: 5px;
+            color: #2563eb;
+        }
+
+        .poll-time {
+            display: flex;
+            align-items: center;
+        }
+
+        .poll-time i {
+            margin-right: 5px;
+            color: #2563eb;
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 28px;
+            }
+            
+            .subtitle {
+                font-size: 14px;
+            }
+            
+            .polls-container {
+                margin-top: 100px;
+            }
+        }
+
+        /* Animation for vote counting */
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .counting {
+            animation: countUp 0.5s forwards;
+        }
+
+        /* Add button for refreshing polls */
+        .refresh-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #2563eb;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .refresh-button:hover {
+            transform: rotate(180deg);
+            background: #1d4ed8;
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.5);
+        }
+
+        /* Poll themes */
+        .theme-gaming { border-left: 5px solid #7c3aed; }
+        .theme-gaming .poll-icon, .theme-gaming .poll-category { color: #7c3aed; }
+        .theme-gaming .poll-category { background: rgba(124, 58, 237, 0.1); }
+        .theme-gaming label.selected { border-color: #7c3aed; background: rgba(124, 58, 237, 0.15); }
+        .theme-gaming label.selected .circle { border-color: #7c3aed; }
+        .theme-gaming label.selected .circle::after { background: #7c3aed; }
+        .theme-gaming .percent { color: #7c3aed; }
+        .theme-gaming label.selected .progress::after { background: #7c3aed; }
+        .theme-gaming .votes-count i, .theme-gaming .poll-time i { color: #7c3aed; }
+
+        .theme-music { border-left: 5px solid #22c55e; }
+        .theme-music .poll-icon, .theme-music .poll-category { color: #22c55e; }
+        .theme-music .poll-category { background: rgba(34, 197, 94, 0.1); }
+        .theme-music label.selected { border-color: #22c55e; background: rgba(34, 197, 94, 0.15); }
+        .theme-music label.selected .circle { border-color: #22c55e; }
+        .theme-music label.selected .circle::after { background: #22c55e; }
+        .theme-music .percent { color: #22c55e; }
+        .theme-music label.selected .progress::after { background: #22c55e; }
+        .theme-music .votes-count i, .theme-music .poll-time i { color: #22c55e; }
+
+        .theme-sport { border-left: 5px solid #2563eb; }
+        .theme-sport .poll-icon, .theme-sport .poll-category { color: #2563eb; }
+        .theme-sport .poll-category { background: rgba(37, 99, 235, 0.1); }
+        .theme-sport label.selected { border-color: #2563eb; background: rgba(37, 99, 235, 0.15); }
+        .theme-sport label.selected .circle { border-color: #2563eb; }
+        .theme-sport label.selected .circle::after { background: #2563eb; }
+        .theme-sport .percent { color: #2563eb; }
+        .theme-sport label.selected .progress::after { background: #2563eb; }
+        .theme-sport .votes-count i, .theme-sport .poll-time i { color: #2563eb; }
+
+        .theme-movies { border-left: 5px solid #ef4444; }
+        .theme-movies .poll-icon, .theme-movies .poll-category { color: #ef4444; }
+        .theme-movies .poll-category { background: rgba(239, 68, 68, 0.1); }
+        .theme-movies label.selected { border-color: #ef4444; background: rgba(239, 68, 68, 0.15); }
+        .theme-movies label.selected .circle { border-color: #ef4444; }
+        .theme-movies label.selected .circle::after { background: #ef4444; }
+        .theme-movies .percent { color: #ef4444; }
+        .theme-movies label.selected .progress::after { background: #ef4444; }
+        .theme-movies .votes-count i, .theme-movies .poll-time i { color: #ef4444; }
+        
+        .back-arrow {
+            position: fixed;
+            top: 85px;
+            left: 20px;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            color: #ffffff;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 30px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .back-arrow:hover {
+            background-color: #2563eb;
+            border-color: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <a href="homepage2.html" class="back-arrow" style="align-items: end;">
+        <i class="fas fa-arrow-left"></i> Home
+      </a>      
+    <!-- Animated Background Elements -->
+    <div class="bg-elements-container"></div>
+
+    <!-- Main Title -->
+    <div class="title-container">
+        <h1 class="title">Interactive Opinion Polls from FanZone</h1>
+        <p class="subtitle">Vote on trending topics and see what others think</p>
+    </div>
+
+    <!-- Polls Container -->
+    <div class="polls-container">
+        <!-- Gaming Poll -->
+        <div class="poll-wrapper theme-gaming">
+            <header>
+                <div>
+                    <i class="fas fa-gamepad poll-icon"></i>
+                    Gaming Platform
+                </div>
+                <span class="poll-category">Gaming</span>
+            </header>
+            <div class="poll-area" id="poll-1">
+                <label>
+                    <div class="row">
+                        <div class="option-text"><span class="circle"></span> PC</div>
+                        <span class="percent">45%</span>
+                    </div>
+                    <div class="progress" style="--w:45;"></div>
+                </label>
+                <label>
+                    <div class="row">
+                        <div class="option-text"><span class="circle"></span> Console</div>
+                        <span class="percent">35%</span>
+                    </div>
+                    <div class="progress" style="--w:35;"></div>
+                </label>
+                <label>
+                    <div class="row">
+                        <div class="option-text"><span class="circle"></span> Mobile</div>
+                        <span class="percent">20%</span>
+                    </div>
+                    <div class="progress" style="--w:20;"></div>
+                </label>
+            </div>
+            <div class="poll-footer">
+                <div class="votes-count"><i class="fas fa-users"></i> <span class="total-votes">452</span> votes</div>
+                <div class="poll-time"><i class="far fa-clock"></i> 2 days left</div>
+            </div>
+        </div>
+
+        <!-- Movie Poll -->
+        <div class="poll-wrapper theme-movies">
+            <header>
+                <div>
+                    <i class="fas fa-film poll-icon"></i>
+                    Favorite Genre
+                </div>
+                <span class="poll-category">Movies</span>
+            </header>
+            <div class="poll-area" id="poll-2">
+                <label>
+                    <div class="row">
+                        <div class="option-text"><span class="circle"></span> Action/Adventure</div>
+                        <span class="percent">38%</span>
+                    </div>
+                    <div class="progress" style="--w:38;"></div>
+                </label>
+                <label>
+                    <div class="row">
+                        <div class="option-text"><span class="circle"></span> Sci-Fi/Fantasy</div>
+                        <span class="percent">29%</span>
+                    </div>
+                    <div class="progress" style="--w:29;"></div>
+                </label>
+                <label>
+                    <div class="row">
+                        <div class="option-text"><span class="circle"></span> Comedy</div>
+                        <span class="percent">20%</span>
+                    </div>
+                    <div class="progress" style="--w:20;"></div>
+                </label>
+                <label>
+                    <div class="row">
+                        <div class="option-text"><span class="circle"></span> Drama</div>
+                        <span class="percent">13%</span>
+                    </div>
+                    <div class="progress" style="--w:13;"></div>
+                </label>
+            </div>
+            <div class="poll-footer">
+                <div class="votes-count"><i class="fas fa-users"></i> <span class="total-votes">783</span> votes</div>
+                <div class="poll-time"><i class="far fa-clock"></i> 1 day left</div>
+            </div>
+        </div>
+
+        <!-- Books Poll -->
+        <div class="poll-wrapper theme-music">
+            <header>
+                <div>
+                    <i class="fas fa-music poll-icon"></i>
+                    Music Preference
+                </div>
+                <span class="poll-category">Music</span>
+            </header>
+            <div class="poll-area" id="poll-3">
+                <label>
+                    <div class="row">
+                        <div class="option-text"><span class="circle"></span> Instrumental</div>
+                        <span class="percent">50%</span>
+                    </div>
+                    <div class="progress" style="--w:50;"></div>
+                </label>
+                <label>
+                    <div class="row">
+                        <div class="option-text"><span class="circle"></span> Classical</div>
+                        <span class="percent">30%</span>
+                    </div>
+                    <div class="progress" style="--w:30;"></div>
+                </label>
+                <label>
+                    <div class="row">
+                        <div class="option-text"><span class="circle"></span> Pop</div>
+                        <span class="percent">20%</span>
+                    </div>
+                    <div class="progress" style="--w:20;"></div>
+                </label>
+            </div>
+            <div class="poll-footer">
+                <div class="votes-count"><i class="fas fa-users"></i> <span class="total-votes">624</span> votes</div>
+                <div class="poll-time"><i class="far fa-clock"></i> 3 days left</div>
+            </div>
+        </div>
+
+        <!-- Technology Poll -->
+        <div class="poll-wrapper theme-sport">
+            <header>
+                <div>
+                    <i class="fas fa-trophy poll-icon"></i>
+                    Sports
+                </div>
+                <span class="poll-category">Sports</span>
+            </header>
+            <div class="poll-area" id="poll-4">
+                <label>
+                    <div class="row">
+                        <div class="option-text"><span class="circle"></span> Athletics</div>
+                        <span class="percent">40%</span>
+                    </div>
+                    <div class="progress" style="--w:40;"></div>
+                </label>
+                <label>
+                    <div class="row">
+                        <div class="option-text"><span class="circle"></span> Badminton</div>
+                        <span class="percent">35%</span>
+                    </div>
+                    <div class="progress" style="--w:35;"></div>
+                </label>
+                <label>
+                    <div class="row">
+                        <div class="option-text"><span class="circle"></span> Ice Hockey</div>
+                        <span class="percent">25%</span>
+                    </div>
+                    <div class="progress" style="--w:25;"></div>
+                </label>
+            </div>
+            <div class="poll-footer">
+                <div class="votes-count"><i class="fas fa-users"></i> <span class="total-votes">517</span> votes</div>
+                <div class="poll-time"><i class="far fa-clock"></i> 5 days left</div>
+            </div>
+        </div>
+
+        <!-- More polls can be added here -->
+    </div>
+
+    <!-- Refresh Button -->
+    <div class="refresh-button">
+        <i class="fas fa-sync-alt"></i>
+    </div>
+
+    <script>
+        // Create animated background elements
+        function createBackgroundElements() {
+            const container = document.querySelector('.bg-elements-container');
+            const count = 10;
+            
+            for (let i = 0; i < count; i++) {
+                const element = document.createElement('div');
+                element.classList.add('bg-element');
+                
+                // Random properties
+                const size = Math.random() * 200 + 50;
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                const opacity = Math.random() * 0.1 + 0.05;
+                const animDuration = Math.random() * 20 + 10;
+                
+                // Apply styles
+                element.style.width = `${size}px`;
+                element.style.height = `${size}px`;
+                element.style.left = `${left}%`;
+                element.style.top = `${top}%`;
+                element.style.opacity = opacity;
+                element.style.animation = `float ${animDuration}s infinite alternate ease-in-out`;
+                
+                // Add animation
+                const keyframes = `
+                    @keyframes float {
+                        0% { transform: translate(0, 0) rotate(0deg); }
+                        100% { transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px) rotate(${Math.random() * 360}deg); }
+                    }
+                `;
+                
+                const styleElement = document.createElement('style');
+                styleElement.textContent = keyframes;
+                document.head.appendChild(styleElement);
+                
+                container.appendChild(element);
+            }
+        }
+
+        // Enhanced poll selection function
+        function enablePollSelection(pollId) {
+            const pollArea = document.getElementById(pollId);
+            const options = pollArea.querySelectorAll('label');
+            const totalVotesElement = pollArea.closest('.poll-wrapper').querySelector('.total-votes');
+            let initialVotes = parseInt(totalVotesElement.textContent);
+            
+            options.forEach(option => {
+                option.addEventListener("click", () => {
+                    // Skip if already selected
+                    if (option.classList.contains("selected")) return;
+                    
+                    // Update selected option
+                    options.forEach(opt => opt.classList.remove("selected"));
+                    option.classList.add("selected");
+                    
+                    // Show results
+                    setTimeout(() => {
+                        options.forEach(opt => opt.classList.add("selectall"));
+                        pollArea.classList.add('results-visible');
+                        
+                        // Increment vote count
+                        initialVotes++;
+                        totalVotesElement.textContent = initialVotes;
+                        totalVotesElement.classList.add('counting');
+                        
+                        // Remove animation class after animation completes
+                        setTimeout(() => {
+                            totalVotesElement.classList.remove('counting');
+                        }, 600);
+                    }, 300);
+                });
+            });
+        }
+
+        // Refresh functionality
+        document.querySelector('.refresh-button').addEventListener('click', function() {
+            const pollAreas = document.querySelectorAll('.poll-area');
+            
+            // Reset all polls
+            pollAreas.forEach(area => {
+                const labels = area.querySelectorAll('label');
+                labels.forEach(label => {
+                    label.classList.remove('selected');
+                    label.classList.remove('selectall');
+                });
+                area.classList.remove('results-visible');
+            });
+            
+            // Rotate the refresh button
+            this.style.transform = 'rotate(360deg)';
+            setTimeout(() => {
+                this.style.transform = 'none';
+            }, 500);
+        });
+
+        // Initialize all functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            createBackgroundElements();
+            
+            // Enable all polls
+            for (let i = 1; i <= 8; i++) {
+                const pollElement = document.getElementById(`poll-${i}`);
+                if (pollElement) {
+                    enablePollSelection(`poll-${i}`);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
