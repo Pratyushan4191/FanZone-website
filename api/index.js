@@ -543,7 +543,7 @@ app.get('/api/search', (req, res) => {
 });
 
 // Serve frontend React application built assets in production
-const frontendBuildPath = path.join(__dirname, 'frontend', 'dist');
+const frontendBuildPath = path.join(__dirname, '..', 'frontend', 'dist');
 app.use(express.static(frontendBuildPath));
 
 app.get('*', (req, res) => {
